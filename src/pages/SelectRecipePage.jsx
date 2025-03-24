@@ -36,9 +36,30 @@ export const SelectRecipePage = () => {
   }
   console.log("ingredientsQty ===> ", ingredientsQty);
 
-  function handleCreate(e){
-    
+  function handleCreate(){
+    console.log("Create...");
+    axios
+      .get("http://localhost:5005/users/1")
+      .then(res=>{
+        
+        
+        console.log("current user:",res.data)
+        const updatedBatch = [...res.data.batch, ingredientsQty]
+
+
+        console.log("ingredientsQty=> ",ingredientsQty);
+        axios
+        .patch("http://localhost:5005/users/1", {
+          batch: updatedBatch
+        })
+        .then(response => {
+          console.log("batch created user updated : ", response);
+        })
+        .catch((err) => console.log(err))
+      
+      })
   }
+
   return (
     <>
       <div>SelectRecipePage</div>
