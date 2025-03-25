@@ -13,12 +13,29 @@ export const LandingPage = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  function handleDeleteBatch(id) {
+    console.log("This is now deleting stuff - first backend, then frontend");
+    axios
+      .delete(`http://localhost:5005/batches/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        const filteredBatches = batches.filter(
+          (oneElement) => oneElement.id !== id
+        );
+        setBatches(filteredBatches);
+      })
+      .catch((err) => console.log(err));
+  }
+
   return (
     <div>
       Hello World!
       <div>
         {batches.map((oneBatch) => (
-          <BatchCard batchData={oneBatch} />
+          <BatchCard
+            batchData={oneBatch}
+            handleDeleteBatch={handleDeleteBatch}
+          />
         ))}
       </div>
     </div>
