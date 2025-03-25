@@ -20,7 +20,6 @@ export const SelectRecipePage = () => {
   }, [recipeBaseSelected]);
 
   function handleCabbage(e) {
-    // console.log(e.target.value);
     const newIngredientsQty = ingredientsQty.map((ingredient, index) => {
       const updatedIngredient = {};
       if (ingredient.name !== "cabbage") {
@@ -35,30 +34,11 @@ export const SelectRecipePage = () => {
       }
       return updatedIngredient;
     });
-    // console.log("newIngredientsQty : ", newIngredientsQty);
     setIngredientsQty(newIngredientsQty);
   }
 
   console.log("ingredientsQty ===> ", ingredientsQty);
   console.log("recipe => ", recipe);
-
-  // function handleCreate() {
-  //   console.log("Create...");
-  //   axios.get("http://localhost:5005/users/1").then((res) => {
-  //     console.log("current user:", res.data);
-  //     const updatedBatch = [...res.data.batch, ingredientsQty];
-
-  //     console.log("ingredientsQty=> ", ingredientsQty);
-  //     axios
-  //       .patch("http://localhost:5005/users/1", {
-  //         batch: updatedBatch,
-  //       })
-  //       .then((response) => {
-  //         console.log("batch created user updated : ", response);
-  //       })
-  //       .catch((err) => console.log(err));
-  //   });
-  // }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -66,13 +46,14 @@ export const SelectRecipePage = () => {
       name: "",
       imageUrl: "",
       createdAt: "",
+      recipeBasedOnId: recipeBaseSelected,
       userId: 1,
       ingredients: ingredientsQty
     }
     try{
       const res = await axios.post("http://localhost:5005/batches", newBatch);
       console.log("New batch in progress...", res.data);
-      navigate("/instuctions");
+      navigate(`/instructions/${res.data.id}`);
     } catch(error) {
       console.log(error)
     }
