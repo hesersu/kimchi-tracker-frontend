@@ -14,7 +14,7 @@ export const LandingPage = () => {
   }, []);
 
   function handleDeleteBatch(id) {
-    console.log("This is now deleting stuff - first backend, then frontend");
+    console.log("This is now deleting batches - first backend, then frontend");
     axios
       .delete(`http://localhost:5005/batches/${id}`)
       .then((res) => {
