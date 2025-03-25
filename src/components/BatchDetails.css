@@ -1,0 +1,28 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.details-container {
+  width: 100%;
+  border-style: solid;
+  padding: 2%;
+  display: flex;
+  flex-direction: row;
+}
+
+.details-image {
+  width: 48%;
+  margin: 2%;
+}
+
+.details-image img {
+  width: 100%;
+}
+
+.details-description {
+  width: 48%;
+  margin: 2%;
+}

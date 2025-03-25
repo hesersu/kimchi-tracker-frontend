@@ -1,5 +1,6 @@
 import React from "react";
 import BatchDetails from "../components/BatchDetails";
+import BatchNotes from "../components/BatchNotes";
 
 const DetailsPage = () => {
   return (
@@ -7,6 +8,7 @@ const DetailsPage = () => {
       DetailsPage
       <div>
         <BatchDetails />
+        <BatchNotes />
       </div>
     </div>
   );
