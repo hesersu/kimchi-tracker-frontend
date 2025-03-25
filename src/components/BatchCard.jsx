@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../components/BatchCard.css";
 import { Link } from "react-router";
 
-const BatchCard = ({ batchData }) => {
+const BatchCard = ({ batchData, handleDeleteBatch }) => {
   console.log(batchData);
 
   return (
@@ -20,7 +20,7 @@ const BatchCard = ({ batchData }) => {
         <Link to={`/details/${batchData.id}`}>
           <button>View Details</button>
         </Link>
-        <button>Delete</button>
+        <button onClick={() => handleDeleteBatch(batchData.id)}>Delete</button>
       </div>
     </div>
   );
