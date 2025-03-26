@@ -11,7 +11,7 @@ export const LandingPage = () => {
       .get(`http://localhost:5005/batches/?userId=${userId}`)
       .then((res) => setBatches(res.data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [userId]);
 
   function handleDeleteBatch(id) {
     console.log("This is now deleting batches - first backend, then frontend");
@@ -28,16 +28,16 @@ export const LandingPage = () => {
   }
 
   return (
-    <div>
-      Hello World!
-      <div>
-        {batches.map((oneBatch) => (
+    <main className="main-container">
+      <div className="card-list-container">
+{batches.map((oneBatch) => (
           <BatchCard
             batchData={oneBatch}
             handleDeleteBatch={handleDeleteBatch}
           />
         ))}
       </div>
-    </div>
+        
+    </main>
   );
 };

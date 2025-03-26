@@ -55,7 +55,6 @@ const BatchNotes = () => {
   return (
     <>
       <h3>Here are my notes!</h3>
-
       <button className="btn-modal-open" onClick={toggleModal}>
         Add Note
       </button>
