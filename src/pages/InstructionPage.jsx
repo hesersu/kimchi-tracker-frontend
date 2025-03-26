@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate ,useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
+import { API_URL } from "../../config/apiConfig";
 
 export const InstructionPage = () => {
   const [recipe, setRecipe] = useState([]);
@@ -9,17 +10,15 @@ export const InstructionPage = () => {
 
   const { id } = useParams();
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     axios
-      .get(`http://localhost:5005/batches/${id}`)
+      .get(`${API_URL}/batches/${id}`)
       .then((res) => {
         console.log("Response for batch : ", res.data);
         // setCurrentBatch(res.data);
         axios
-          .get(
-            `http://localhost:5005/defaultRecipe/${res.data.recipeBasedOnId}`
-          )
+          .get(`${API_URL}/defaultRecipe/${res.data.recipeBasedOnId}`)
           .then((res) => {
             // console.log("Response for recipe : ", res.data);
             setRecipe(res.data);
@@ -47,7 +46,7 @@ export const InstructionPage = () => {
     }
   }
 
-  function navigateToNextPage(){
+  function navigateToNextPage() {
     navigate(`/create-recipe/${id}`);
   }
 

@@ -1,31 +1,45 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import React, { useState, useEffect } from "react";
 import { API_URL } from "../../config/apiConfig";
+import { useNavigate } from "react-router";
 
-const AddNoteForm = ({ batchId, setNotes, notes, setModalAdd }) => {
+const EditNoteForm = ({ oneNoteId, setIsUpdated }) => {
   const [notesDate, setNotesDate] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [notesContent, setNotesContent] = useState("");
-  const navigate = useNavigate();
+  const nav = useNavigate();
 
-  // Handle Create Note
+  // Getting the current state to preset the form
 
-  async function handleCreateNote(event) {
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/notes/${oneNoteId}`)
+      .then((res) => {
+        console.log(res);
+        setNotesDate(res.data.date);
+        setImageUrl(res.data.imageUrl);
+        setNotesContent(res.data.content);
+      })
+      .catch((err) => console.log(err));
+  }, [oneNoteId]);
+
+  //Handle Update Note
+
+  async function handleEditNote(event) {
     event.preventDefault();
-    console.log("Clicking Submit");
-    const newNote = {
-      batchId: Number(batchId),
-      userId: 1,
+    console.log("We are editing!");
+    const editNote = {
       date: notesDate,
       imageUrl: imageUrl,
       content: notesContent,
     };
     try {
-      const response = await axios.post(`${API_URL}/notes/`, newNote);
+      const response = await axios.patch(
+        `${API_URL}/notes/${oneNoteId}`,
+        editNote
+      );
       console.log("Done", response.data);
-      setNotes([response.data, ...notes]);
-      setModalAdd(false);
+      setIsUpdated(true);
     } catch (err) {
       console.log(err);
     }
@@ -33,8 +47,8 @@ const AddNoteForm = ({ batchId, setNotes, notes, setModalAdd }) => {
 
   return (
     <div>
-      <section className="add-notes-container">
-        <form onSubmit={handleCreateNote}>
+      <section className="edit-notes-container">
+        <form onSubmit={handleEditNote}>
           <label>Today's date</label>
           <input
             type="date"
@@ -59,11 +73,11 @@ const AddNoteForm = ({ batchId, setNotes, notes, setModalAdd }) => {
             value={notesContent}
             onChange={(e) => setNotesContent(e.target.value)}
           />
-          <button type="submit">Add Note</button>
+          <button type="submit">Update Note</button>
         </form>
       </section>
     </div>
   );
 };
 
-export default AddNoteForm;
+export default EditNoteForm;

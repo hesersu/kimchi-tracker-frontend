@@ -3,7 +3,8 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import maangchiImage from "../assets/emily-kim.png";
 import jongwonImage from "../assets/paik-jong-won.png";
-// import { IngredientForm } from "../components/IngredientForm"
+import { API_URL } from "../../config/apiConfig";
+
 export const SelectRecipePage = () => {
   const [recipeBaseSelected, setrecipeBaseSelected] = useState(1); // here 1 is the ID of the default recipe
 
@@ -13,7 +14,7 @@ export const SelectRecipePage = () => {
   const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get(`http://localhost:5005/defaultRecipe/${recipeBaseSelected}`)
+      .get(`${API_URL}/defaultRecipe/${recipeBaseSelected}`)
       .then((res) => {
         setRecipe(res.data);
         setIngredientsQty(res.data.ingredients);
@@ -53,7 +54,7 @@ export const SelectRecipePage = () => {
       ingredients: ingredientsQty,
     };
     try {
-      const res = await axios.post("http://localhost:5005/batches", newBatch);
+      const res = await axios.post("${API_URL}/batches", newBatch);
       console.log("New batch in progress...", res.data);
       navigate(`/instructions/${res.data.id}`);
     } catch (error) {
@@ -147,6 +148,7 @@ export const SelectRecipePage = () => {
                 </p>
               );
             })}
+
           <div className="continue-btn-container">
             <button type="submit" className="continue-btn">
               Create

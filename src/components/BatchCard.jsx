@@ -13,7 +13,11 @@ const BatchCard = ({ batchData, handleDeleteBatch }) => {
     <article className="card-container">
       <div className="card-content">
         <section className="card-image-container">
-          <img src={batchData.imageUrl} alt="One Kimchi" className="card-image"/>
+          <img
+            src={batchData.imageUrl}
+            alt="One Kimchi"
+            className="card-image"
+          />
         </section>
         <section className="card-description">
           <h3 className="card-description-title">{batchData.name}</h3>

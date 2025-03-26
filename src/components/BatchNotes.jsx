@@ -3,21 +3,23 @@ import "../components/BatchNotes.css";
 import { useParams } from "react-router";
 import axios from "axios";
 import AddNoteForm from "./AddNoteForm";
+import EditNoteForm from "./EditNoteForm";
+import { API_URL } from "../../config/apiConfig";
 
 const BatchNotes = () => {
   const { batchId } = useParams();
   const [notes, setNotes] = useState();
-  const [modal, setModal] = useState(false);
+  const [modalAdd, setModalAdd] = useState(false);
+  const [modalEdit, setModalEdit] = useState(false);
+  const [editNoteId, setEditNoteId] = useState();
+  const [isUpdated, setIsUpdated] = useState(false);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5005/notes/?batchId=${batchId}`)
+      .get(`${API_URL}/notes/?batchId=${batchId}`)
       .then((res) => setNotes(res.data))
       .catch((err) => console.log(err));
-  }, [batchId]);
-
-  console.log(notes);
-
+  }, [batchId, isUpdated]);
   //   console.log(oneBatch);
   if (!notes) {
     return <div>Notes is not found!</div>;
@@ -25,12 +27,10 @@ const BatchNotes = () => {
 
   //Handle delete of notes
   function handleDeleteNotes(id) {
-    console.log(id);
     console.log("This is now deleting notes - first backend, then frontend");
     axios
-      .delete(`http://localhost:5005/notes/${id}`)
+      .delete(`${API_URL}/notes/${id}`)
       .then((res) => {
-        console.log(res.data);
         const filteredNotes = notes.filter(
           (oneElement) => oneElement.id !== id
         );
@@ -39,34 +39,74 @@ const BatchNotes = () => {
       .catch((err) => console.log(err));
   }
 
-  // Handle Modal
-  const toggleModal = () => {
-    setModal(!modal);
-    console.log(modal);
+  // Handle Modal Add
+  const toggleModalAdd = () => {
+    setModalAdd(!modalAdd);
+    console.log(modalAdd);
   };
 
-  if (modal) {
+  if (modalAdd) {
     document.body.classList.add(`active-modal`);
   } else {
     document.body.classList.remove(`active-modal`);
   }
 
+  // Handle Modal Edit
+  const toggleModalEdit = () => {
+    setModalEdit(!modalEdit);
+    console.log(modalEdit);
+  };
+
+  if (modalEdit) {
+    document.body.classList.add(`active-modal`);
+  } else {
+    document.body.classList.remove(`active-modal`);
+  }
+
+  // Handle Setting note to edit
+
+  const setEditNoteProps = (id) => {
+    toggleModalEdit();
+    setEditNoteId(id);
+  };
+
+  console.log(editNoteId);
+
   //Front End
   return (
     <>
       <h3>Here are my notes!</h3>
-      <button className="btn-modal-open" onClick={toggleModal}>
+      <button className="btn-modal-open" onClick={toggleModalAdd}>
         Add Note
       </button>
 
-      {modal && (
+      {/* Add Modal Part */}
+      {modalAdd && (
         <div className="modal-container">
           <div className="modal-overlay"></div>
           <div className="modal-content">
-            <AddNoteForm batchId={batchId} setNotes={setNotes} notes={notes} />
-            <button className="btn-modal-close" onClick={toggleModal}>
+            <h5>Add your notes</h5>
+            <AddNoteForm
+              batchId={batchId}
+              setNotes={setNotes}
+              notes={notes}
+              setModalAdd={setModalAdd}
+            />
+            <button className="btn-modal-close" onClick={toggleModalAdd}>
               Close Modal
             </button>
+          </div>
+        </div>
+      )}
+
+      {/* Edit Modal Part */}
+      {modalEdit && (
+        <div className="modal-container">
+          <div className="modal-overlay"></div>
+          <div className="modal-content">
+            <h5>Edit your notes</h5>
+            <EditNoteForm oneNoteId={editNoteId} setIsUpdated={setIsUpdated} />
+            <button onClick={toggleModalEdit}>Close Modal</button>
           </div>
         </div>
       )}
@@ -83,6 +123,9 @@ const BatchNotes = () => {
                 <p>{oneNote.content}</p>
                 <button onClick={() => handleDeleteNotes(oneNote.id)}>
                   Delete Note
+                </button>
+                <button onClick={() => setEditNoteProps(oneNote.id)}>
+                  Edit Note
                 </button>
               </section>
             </div>

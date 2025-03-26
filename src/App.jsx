@@ -7,6 +7,7 @@ import DetailsPage from "./pages/DetailsPage";
 import { InstructionPage } from "./pages/InstructionPage";
 import { CreateRecipePage } from "./pages/CreateRecipePage";
 import Header from "./components/Header";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/instructions/:id" element={<InstructionPage />} />
         <Route path="/create-recipe/:id" element={<CreateRecipePage />} />
         <Route path="/details/:batchId" element={<DetailsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );
