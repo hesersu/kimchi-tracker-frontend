@@ -12,7 +12,7 @@ const AddNoteForm = ({ batchId, setNotes, notes }) => {
     event.preventDefault();
     console.log("Clicking Submit");
     const newNote = {
-      batchId: batchId,
+      batchId: Number(batchId),
       userId: 1,
       date: notesDate,
       imageUrl: imageUrl,
@@ -24,7 +24,7 @@ const AddNoteForm = ({ batchId, setNotes, notes }) => {
         newNote
       );
       console.log("Done", response.data);
-      setNotes([newNote, ...notes]);
+      setNotes([response.data, ...notes]);
     } catch (err) {
       console.log(err);
     }
