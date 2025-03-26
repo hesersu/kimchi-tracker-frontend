@@ -1,28 +1,3 @@
-.background-green{
-  background-color: green;
-}
-.notes-container {
-  width: 100%;
-  border-style: solid;
-  padding: 2%;
-  display: flex;
-  flex-direction: row;
-}
-
-.notes-image {
-  width: 20%;
-  margin: 2%;
-}
-
-.notes-image img {
-  width: 100%;
-}
-
-.notes-description {
-  width: 48%;
-  margin: 2%;
-}
-
 body.active-modal {
   overflow-y: hidden;
 }
