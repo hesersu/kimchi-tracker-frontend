@@ -28,15 +28,26 @@ const BatchDetails = () => {
         <section className="details-description">
           <h2>{oneBatch.name}</h2>
           <h3>Recipe</h3>
-          <ul>
-            {oneBatch.ingredients.map((ingredient) => {
-              return (
-                <li key={ingredient.name}>
-                  {ingredient.name} {ingredient.qty} {ingredient.unit}
-                </li>
-              );
-            })}
-          </ul>
+          <table className="details-table">
+            <thead>
+              <tr>
+                <th>Ingredient</th>
+                <th>Quantity</th>
+                <th>Unit</th>
+              </tr>
+            </thead>
+            <tbody>
+              {oneBatch.ingredients.map((ingredient) => {
+                return (
+                  <tr key={ingredient.name}>
+                    <td>{ingredient.name}</td>
+                    <td>{ingredient.qty}</td>
+                    <td>{ingredient.unit}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </section>
       </div>
     </div>
