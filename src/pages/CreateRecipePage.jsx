@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
+import { API_URL } from "../../config/apiConfig";
 
 export const CreateRecipePage = () => {
   const [batch, setBatch] = useState();
@@ -16,7 +17,7 @@ export const CreateRecipePage = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5005/batches/${id}`)
+      .get(`${API_URL}/batches/${id}`)
       .then((res) => setBatch(res.data))
       .catch((err) => console.log(err));
   }, [id]);
@@ -41,13 +42,10 @@ export const CreateRecipePage = () => {
     // console.log("batch : ", batch);
     // console.log("note : ", note);
     try {
-      const res_batch = await axios.patch(
-        `http://localhost:5005/batches/${id}`,
-        batch
-      );
+      const res_batch = await axios.patch(`${API_URL}/batches/${id}`, batch);
       console.log("Batch created", res_batch.data);
       if (note.content !== "") {
-        const res_note = await axios.post("http://localhost:5005/notes", note);
+        const res_note = await axios.post("${API_URL}/notes", note);
         console.log("Note created", res_note.data);
       }
       navigate(`/`);

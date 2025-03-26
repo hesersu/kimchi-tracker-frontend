@@ -8,7 +8,11 @@ const BatchCard = ({ batchData, handleDeleteBatch }) => {
     <article className="card-container">
       <div className="card-content">
         <section className="card-image-container">
-          <img src={batchData.imageUrl} alt="One Kimchi" className="card-image"/>
+          <img
+            src={batchData.imageUrl}
+            alt="One Kimchi"
+            className="card-image"
+          />
         </section>
         <section className="card-description">
           <h3 className="card-description-title">{batchData.name}</h3>
@@ -19,7 +23,12 @@ const BatchCard = ({ batchData, handleDeleteBatch }) => {
         <Link to={`/details/${batchData.id}`}>
           <button className="card-btn">View Details</button>
         </Link>
-        <button onClick={() => handleDeleteBatch(batchData.id)} className="card-btn btn-danger">Delete</button>
+        <button
+          onClick={() => handleDeleteBatch(batchData.id)}
+          className="card-btn btn-danger"
+        >
+          Delete
+        </button>
       </div>
     </article>
   );
