@@ -12,13 +12,14 @@ const BatchNotes = () => {
   const [modalAdd, setModalAdd] = useState(false);
   const [modalEdit, setModalEdit] = useState(false);
   const [editNoteId, setEditNoteId] = useState();
+  const [isUpdated, setIsUpdated] = useState(false);
 
   useEffect(() => {
     axios
       .get(`${API_URL}/notes/?batchId=${batchId}`)
       .then((res) => setNotes(res.data))
       .catch((err) => console.log(err));
-  }, [batchId]);
+  }, [batchId, isUpdated]);
   //   console.log(oneBatch);
   if (!notes) {
     return <div>Notes is not found!</div>;
@@ -104,7 +105,7 @@ const BatchNotes = () => {
           <div className="modal-overlay"></div>
           <div className="modal-content">
             <h5>Edit your notes</h5>
-            <EditNoteForm oneNoteId={editNoteId} />
+            <EditNoteForm oneNoteId={editNoteId} setIsUpdated={setIsUpdated} />
             <button onClick={toggleModalEdit}>Close Modal</button>
           </div>
         </div>
