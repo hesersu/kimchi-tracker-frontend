@@ -2,6 +2,7 @@ import axios from "axios";
 import "../components/BatchDetails.css";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { API_URL } from "../../config/apiConfig";
 
 const BatchDetails = () => {
   const { batchId } = useParams();
@@ -9,7 +10,7 @@ const BatchDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5005/batches/?id=${batchId}`)
+      .get(`${API_URL}/batches/?id=${batchId}`)
       .then((res) => setOneBatch(res.data[0]))
       .catch((err) => console.log(err));
   }, [batchId]);

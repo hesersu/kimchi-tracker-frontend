@@ -1,12 +1,15 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import { API_URL } from "../../config/apiConfig";
 
-const AddNoteForm = ({ batchId, setNotes, notes }) => {
+const AddNoteForm = ({ batchId, setNotes, notes, setModalAdd }) => {
   const [notesDate, setNotesDate] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [notesContent, setNotesContent] = useState("");
   const navigate = useNavigate();
+
+  // Handle Create Note
 
   async function handleCreateNote(event) {
     event.preventDefault();
@@ -19,12 +22,10 @@ const AddNoteForm = ({ batchId, setNotes, notes }) => {
       content: notesContent,
     };
     try {
-      const response = await axios.post(
-        `http://localhost:5005/notes/`,
-        newNote
-      );
+      const response = await axios.post(`${API_URL}/notes/`, newNote);
       console.log("Done", response.data);
       setNotes([response.data, ...notes]);
+      setModalAdd(false);
     } catch (err) {
       console.log(err);
     }
