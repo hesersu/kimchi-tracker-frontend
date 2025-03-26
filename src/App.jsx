@@ -8,6 +8,7 @@ import { InstructionPage } from "./pages/InstructionPage";
 import { CreateRecipePage } from "./pages/CreateRecipePage";
 import Header from "./components/Header";
 import NotFoundPage from "./pages/NotFoundPage";
+import GeminiCall from "./pages/GeminiCall";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/instructions/:id" element={<InstructionPage />} />
         <Route path="/create-recipe/:id" element={<CreateRecipePage />} />
         <Route path="/details/:batchId" element={<DetailsPage />} />
+        <Route path="/gemini-call" element={<GeminiCall />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
