@@ -7,6 +7,7 @@ import AddNoteForm from "./AddNoteForm";
 const BatchNotes = () => {
   const { batchId } = useParams();
   const [notes, setNotes] = useState();
+  const [modal, setModal] = useState(false);
 
   useEffect(() => {
     axios
@@ -24,6 +25,7 @@ const BatchNotes = () => {
 
   //Handle delete of notes
   function handleDeleteNotes(id) {
+    console.log(id);
     console.log("This is now deleting notes - first backend, then frontend");
     axios
       .delete(`http://localhost:5005/notes/${id}`)
@@ -37,11 +39,39 @@ const BatchNotes = () => {
       .catch((err) => console.log(err));
   }
 
+  // Handle Modal
+  const toggleModal = () => {
+    setModal(!modal);
+    console.log(modal);
+  };
+
+  if (modal) {
+    document.body.classList.add(`active-modal`);
+  } else {
+    document.body.classList.remove(`active-modal`);
+  }
+
   //Front End
   return (
-    <div>
+    <>
       <h3>Here are my notes!</h3>
-      <AddNoteForm batchId={batchId} setNotes={setNotes} notes={notes} />
+
+      <button className="btn-modal-open" onClick={toggleModal}>
+        Add Note
+      </button>
+
+      {modal && (
+        <div className="modal-container">
+          <div className="modal-overlay"></div>
+          <div className="modal-content">
+            <AddNoteForm batchId={batchId} setNotes={setNotes} notes={notes} />
+            <button className="btn-modal-close" onClick={toggleModal}>
+              Close Modal
+            </button>
+          </div>
+        </div>
+      )}
+
       <div>
         {notes.map((oneNote) => {
           return (
@@ -60,7 +90,7 @@ const BatchNotes = () => {
           );
         })}
       </div>
-    </div>
+    </>
   );
 };
 
