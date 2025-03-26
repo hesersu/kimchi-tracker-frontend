@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import maangchiImage from "../assets/emily-kim.png";
+import jongwonImage from "../assets/paik-jong-won.png";
 // import { IngredientForm } from "../components/IngredientForm"
 export const SelectRecipePage = () => {
   const [recipeBaseSelected, setrecipeBaseSelected] = useState(1); // here 1 is the ID of the default recipe
@@ -25,8 +27,8 @@ export const SelectRecipePage = () => {
       if (ingredient.name !== "cabbage") {
         (updatedIngredient.name = ingredient.name),
           (updatedIngredient.qty =
-            recipe.ingredients[index].qty * Number(e.target.value)),
-            updatedIngredient.unit = ingredient.unit;
+            Math.round((recipe.ingredients[index].qty * Number(e.target.value)) * 10)/10),
+          (updatedIngredient.unit = ingredient.unit);
       } else {
         (updatedIngredient.name = ingredient.name),
           (updatedIngredient.qty = e.target.value),
@@ -48,63 +50,110 @@ export const SelectRecipePage = () => {
       createdAt: "",
       recipeBasedOnId: recipeBaseSelected,
       userId: 1,
-      ingredients: ingredientsQty
-    }
-    try{
+      ingredients: ingredientsQty,
+    };
+    try {
       const res = await axios.post("http://localhost:5005/batches", newBatch);
       console.log("New batch in progress...", res.data);
       navigate(`/instructions/${res.data.id}`);
-    } catch(error) {
-      console.log(error)
+    } catch (error) {
+      console.log(error);
     }
   }
 
   return (
-    <>
-      <h1>Select your base recipe</h1>
-      <div className="recipe-selected-btn-container">
+    <main className="main-container">
+      <div className="recipe-selector-container">
         <button
           onClick={() => setrecipeBaseSelected(1)}
-          className="recipe-selected-btn"
+          className={
+            recipeBaseSelected == 1
+              ? "recipe-selector-btn recipe-selector-btn-selected"
+              : "recipe-selector-btn"
+          }
         >
-          Maangchi Traditional Napa Cabbage Kimchi Recipe
+          <img
+            src={maangchiImage}
+            alt="maangchi chef"
+            className="recipe-selector-img"
+          />
+          Maangchi (Emily Kim) Traditional Napa Cabbage Kimchi Recipe
         </button>
         <button
           onClick={() => setrecipeBaseSelected(3)}
-          className="recipe-selected-btn"
+          className={
+            recipeBaseSelected == 3
+              ? "recipe-selector-btn recipe-selector-btn-selected"
+              : "recipe-selector-btn"
+          }
         >
-          Jongwon Baek Cabbage Kimchi Recipe
+          <img
+            src={jongwonImage}
+            alt="jongwon chef"
+            className="recipe-selector-img"
+          />
+          Paik Jong-Won Traditional Napa Cabbage Kimchi Recipe
         </button>
       </div>
-      <div className="container-flex-column-p-1">
-        <p>I choose the : {recipe ? `${recipe.name} Recipe` : " Maangchi Traditional Napa Cabbage Kimchi Recipe"}</p>
-        <form action="POST" onSubmit={handleSubmit}>
+      <div className="recipe-selector-form-container">
+        <p>
+          You are currently selecting{" "}
+          <span className="recipe-selector-highlight">
+            the{" "}
+            {recipe
+              ? `${recipe.name} Recipe`
+              : "Maangchi (Emily Kim) Traditional Napa Cabbage Kimchi Recipe"}
+          </span>
+        </p>
+        <form
+          action="POST"
+          onSubmit={handleSubmit}
+          className="recipe-selector-form"
+        >
           {ingredientsQty &&
             ingredientsQty.map((ingredient) => {
               return ingredient.name === "cabbage" ? (
-                <div className="form-control">
-                  <label htmlFor="cabbageInput">Amount of Cabbage (kg): </label>
-                  <input
-                  type="number"
-                  id="cabbageInput"
-                  name="cabbageQty"
-                  step="0.001"
-                  value={ingredient.qty}
-                  onChange={handleCabbage}
-                />
-                <p><small>(Adjust the quantity of cabbage needed to calculate all the ingredients)</small></p>
+                <div
+                  key={`recipe-selector-${ingredient.name.replace(" ", "-")}`}
+                >
+                  <div className="recipe-selector-form-control">
+                    <label htmlFor="cabbageInput">
+                      Amount of cabbage (kg):{" "}
+                    </label>
+                    <input
+                      type="number"
+                      id="cabbageInput"
+                      name="cabbageQty"
+                      step="0.1"
+                      value={ingredient.qty}
+                      onChange={handleCabbage}
+                      className="recipe-selector-input"
+                    />
+                  </div>
+                  <p className="recipe-selector-footnote">
+                    (Adjust the quantity of cabbage needed to calculate all the
+                    ingredients)
+                  </p>
                 </div>
-                
               ) : (
-                <p>
-                  {ingredient.name} : {ingredient.qty} {ingredient.unit}
+                <p
+                  key={`recipe-selector-${ingredient.name.replace(" ", "-")}`}
+                  className="recipe-selector-list-item"
+                >
+                  {ingredient.name} :{" "}
+                  <span className="recipe-selector-space">
+                    {ingredient.qty} {ingredient.unit}
+                  </span>
                 </p>
               );
             })}
-          <button type="submit" className="recipe-selected-btn">Create</button>
+          <div className="continue-btn-container">
+            <button type="submit" className="continue-btn">
+              Create
+            </button>
+          </div>
         </form>
-        
       </div>
-    </>
+    </main>
   );
 };

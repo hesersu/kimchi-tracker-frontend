@@ -21,7 +21,7 @@ export const InstructionPage = () => {
             `http://localhost:5005/defaultRecipe/${res.data.recipeBasedOnId}`
           )
           .then((res) => {
-            console.log("Response for recipe : ", res.data);
+            // console.log("Response for recipe : ", res.data);
             setRecipe(res.data);
           });
       })
@@ -32,16 +32,16 @@ export const InstructionPage = () => {
     const { value, checked } = e.target;
     if (checked) {
       setSteps([...steps, value]);
-      console.log("steps.length", steps.length);
-      console.log("recipe.directions.length", recipe.directions.length);
+      // console.log("steps.length", steps.length);
+      // console.log("recipe.directions.length", recipe.directions.length);
       if(steps.length+1 === recipe.directions.length){
-        console.log("TRUE");
+        // console.log("TRUE");
         setIsActive(true);
       }
     } else {
       setSteps(steps.filter((step) => step !== value));
       if(steps.length+1 !== recipe.directions.length){
-        console.log("FALSE");
+        // console.log("FALSE");
         setIsActive(false);
       }
     }
@@ -52,26 +52,32 @@ export const InstructionPage = () => {
   }
 
   return (
-    <div className="container-flex-column-p-1">
-      <h1>Instructions</h1>
-      <p className="instruction-subtitle">
-        Let yourself be guided by {recipe.author}
-      </p>
-      <ol className="instruction-list">
-        {recipe.directions &&
-          recipe.directions.map((step,index) => (
-            <li className="instruction-list-item" key={`step_${index+1}`}>
-              <input type="checkbox" name="step" id={`step_${index+1}`} value={`step_${index+1}`} onChange={handleCheck}/>
-              {step}
-            </li>
-          ))}
-      </ol>
-      {
+    <main className="main-container">
+      <div className="instruction-container">
+        <h2 className="instruction-title">Instructions</h2>
+        <p className="instruction-subtitle">
+          Let yourself be guided by <span className="instruction-subtitle-highlight">{recipe.author}</span>
+        </p>
+        <ol className="instruction-list">
+          {recipe.directions &&
+            recipe.directions.map((step,index) => (
+              <li className="instruction-list-item" key={`step_${index+1}`}>
+                <input type="checkbox" name="step" id={`step_${index+1}`} value={`step_${index+1}`} onChange={handleCheck} className="instruction-list-checkbox"/>
+                {step}
+              </li>
+            ))}
+        </ol>
+        {
         isActive ? 
-        <button onClick={navigateToNextPage}>Continue to register</button>
+        <div className="continue-btn-container continue-btn-container-lg">
+          <button onClick={navigateToNextPage} className="continue-btn">Continue to register</button>
+        </div>
         :
-        <button onClick={navigateToNextPage} disabled>Continue to register</button>
-      }
-    </div>
+        <div className="continue-btn-container continue-btn-container-lg">
+          <button onClick={navigateToNextPage} disabled className="continue-btn">Continue to register</button>
+        </div>
+        }
+      </div>
+    </main>
   );
 };

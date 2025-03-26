@@ -73,6 +73,8 @@ a{
 }
 button{
   font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+  color: #1d1e1e;
+  cursor: pointer;
 }
 
 #root {
@@ -88,14 +90,199 @@ button{
   flex-direction: column;
   gap: 1rem;
 }
+.recipe-selector-container{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.recipe-selector-btn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  width: 100%;
+  font-weight: 700;
+  color: #1d1e1e;
+  background: none ;
+  border: 2px solid hsla(180, 2%, 12%, 0.5);
+  overflow: hidden;
+  cursor: pointer;
+}
+.recipe-selector-btn-selected{
+  border-color: hsla(130, 97%, 24%, 0.5);
+}
+.recipe-selector-img{
+  width: 100%;
+  transition: transform 0.4s ease-in;
+}
+.recipe-selector-btn:hover > .recipe-selector-img{
+  transform: scale(1.05);
+}
+.recipe-selector-form-container{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.recipe-selector-highlight{
+  position: relative;
+  padding-right: 0.5rem;
+  background-image: linear-gradient(0deg, #5ccdf080 0.5rem, transparent 1rem);
+}
+.recipe-selector-form{
+  display: flex;
+  flex-direction: column;
+}
+.recipe-selector-form-control{
+  display: flex;
+  border-bottom: 2px solid hsla(130, 97%, 24%, 0.5);
+}
+.recipe-selector-input{
+  margin: 0 1rem;
+  padding-left: 0.5rem;
+  max-width: 4rem;
+  font-weight: 700;
+  text-align: center;
+  background: none;
+  outline: none;
+  border: none;
+  border-left: 2px solid hsla(130, 97%, 24%, 0.5);
+  border-right: 2px solid hsla(130, 97%, 24%, 0.5);
+}
+.recipe-selector-footnote{
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  font-weight: 300;
+  font-style: italic;
+}
+.recipe-selector-list-item{
+  font-size: 1rem;
+}
+.recipe-selector-list-item::before{
+  content: " + ";
+  color: #5ccdf0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.recipe-selector-space{
+  margin-left: 0.5rem;
+}
+.continue-btn-container{
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 75%;
+  border-bottom: 2px solid hsla(130, 97%, 24%, 0.5);
+}
+.continue-btn{
+  position: relative;
+  margin-top: 1rem;
+  padding: 0.5rem 3rem;
+  width:fit-content;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #1d1e1e;
+  background-color: transparent;
+  border: none;
+  border-left: 2px solid hsla(130, 97%, 24%, 0.5);
+  border-right: 2px solid hsla(130, 97%, 24%, 0.5);
+  overflow: hidden;
+  cursor: pointer;
+}
+.continue-btn::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 100%;
+  background-image: linear-gradient(0deg, #5ccdf080 0.5rem, transparent 1.2rem);
+  transition: width 0.4s ease-in-out;
+}
+.continue-btn:target::after, 
+.continue-btn:hover::after, 
+.continue-btn:focus::after, 
+.continue-btn:focus-visible::after, 
+.continue-btn:active::after{
+  width: 100%;
+}
+
+.instruction-container{
+  display: flex;
+  flex-direction: column;
+}
+.instruction-title{
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1d1e1e;
+}
+
+.instruction-subtitle{
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.instruction-subtitle-highlight{
+  padding: 0 0.5rem;
+  background-image: linear-gradient(0deg, #5ccdf080 0.5rem, transparent 1rem);
+}
+
+.instruction-list {
+  padding: 1rem;
+  list-style-position: inside;
+  list-style-type: korean-hangul-formal;
+}
+
+.instruction-list-item {
+  margin: 0.5rem 0;
+}
+
+.instruction-list-item::marker {
+  color: #ee1c27;
+  font-weight: 700;
+}
+
+.instruction-list-checkbox{
+  accent-color:#5ccdf0;
+}
+.continue-btn-container-lg{
+  width: 90%;
+}
 /*
 
 
 */
+@media (min-width: 425px){
+  .continue-btn-container{
+    width: 100%;
+  }
+}
 @media (min-width: 768px){
   .card-list-container{
     flex-direction: row;
     flex-wrap: wrap;
+  }
+  .recipe-selector-form-control{
+    max-width: 60%;
+  }
+  .continue-btn-container{
+    width: 40%;
+    max-width: 30rem;
+  }
+  .continue-btn-container-lg{
+    width: 80%;
+    max-width: 36rem;
+  }
+}
+@media (min-width: 1440px){
+  .recipe-selector-form-control{
+    max-width: 35%;
   }
 }
 /*
@@ -121,18 +308,9 @@ button{
 .form-control {
   margin-bottom: 1rem;
 }
-.instruction-subtitle {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-.instruction-list {
-  padding: 1rem;
-  list-style-position: inside;
-  list-style-type: korean-hangul-formal;
-}
-.instruction-list-item {
-  margin: 0.25rem 0;
-}
+
+
+
 .instruction-list-item::marker {
   /* color: red; */
   font-weight: 700;
