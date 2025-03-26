@@ -55,6 +55,7 @@ body {
   align-items: center;
   justify-content: center;
   font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+  color: #1d1e1e;
   background-color: #d9d6d2;
 }
 h1,
@@ -86,6 +87,16 @@ button{
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+/*
+
+
+*/
+@media (min-width: 768px){
+  .card-list-container{
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 /*
 
