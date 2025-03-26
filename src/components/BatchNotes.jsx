@@ -39,7 +39,7 @@ const BatchNotes = () => {
 
   //Front End
   return (
-    <div>
+    <div className="background-green">
       <h3>Here are my notes!</h3>
       <AddNoteForm batchId={batchId} setNotes={setNotes} notes={notes} />
       <div>
