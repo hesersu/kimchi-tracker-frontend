@@ -1,7 +1,7 @@
-.card-body {
+.card-container {
   width: 600px;
   border-style: solid;
-  border-radius: 10px;
+  border-radius: 5px;
   margin: 20px;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@
   margin: 2%;
 }
 
-.card-body img {
+.card-container img {
   width: 100%;
 }
 

@@ -6,7 +6,7 @@ const BatchCard = ({ batchData, handleDeleteBatch }) => {
   console.log(batchData);
 
   return (
-    <div className="card-body">
+    <div className="card-container">
       <div className="card-content">
         <section className="card-image">
           <img src={batchData.imageUrl} alt="One Kimchi" />
