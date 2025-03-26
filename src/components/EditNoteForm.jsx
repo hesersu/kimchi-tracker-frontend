@@ -45,30 +45,6 @@ const EditNoteForm = ({ oneNoteId, setIsUpdated }) => {
     }
   }
 
-  //   // Handle Update Note
-
-  //   async function handleEditNote(event) {
-  //     event.preventDefault();
-  //     console.log("Clicking Submit");
-  //     const editNote = {
-  //       batchId: Number(batchId),
-  //       userId: 1,
-  //       date: notesDate,
-  //       imageUrl: imageUrl,
-  //       content: notesContent,
-  //     };
-  //     try {
-  //       const response = await axios.patch(
-  //         `${API_URL}/notes/${oneNoteId}`,
-  //         newNote
-  //       );
-  //       console.log("Done", response.data);
-  //       setNotes([response.data, ...notes]);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   }
-
   return (
     <div>
       <section className="edit-notes-container">
