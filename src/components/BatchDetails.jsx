@@ -3,10 +3,13 @@ import "../components/BatchDetails.css";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { API_URL } from "../../config/apiConfig";
+import defaultKimchi from "../assets/kimchi-default.png";
 
 const BatchDetails = () => {
   const { batchId } = useParams();
   const [oneBatch, setOneBatch] = useState();
+
+  const defaultImage = defaultKimchi;
 
   useEffect(() => {
     axios
@@ -24,7 +27,7 @@ const BatchDetails = () => {
     <div className="detail-container">
       <section className="detail-image-container">
         <img
-          src={oneBatch.imageUrl}
+          src={oneBatch.imageUrl ? oneBatch.imageUrl : defaultImage}
           alt={oneBatch.name}
           className="detail-image"
         />

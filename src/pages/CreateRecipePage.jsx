@@ -10,7 +10,7 @@ export const CreateRecipePage = () => {
     batchId: null,
     userId: 1,
     date: "",
-    imageUrl: "",
+    imageUrl: "https://pikaso.cdnpk.net/private/production/1707907598/upload.jpeg?token=exp=1748563200~hmac=ac961820da3b4156e97ae6a83b4a8873abf8c885bdc34fe61a05a8c237ffd800&preview=1",
     content: "",
   });
   const { id } = useParams();
@@ -40,9 +40,13 @@ export const CreateRecipePage = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     console.log("On submit...");
+    if(!batch.imageUrl || batch.imageUrl.length <=0){
+      setBatch({ ...batch, ["imageUrl"]: "https://pikaso.cdnpk.net/private/production/1707907598/upload.jpeg?token=exp=1748563200~hmac=ac961820da3b4156e97ae6a83b4a8873abf8c885bdc34fe61a05a8c237ffd800&preview=1" });
+    }
     // console.log("batch : ", batch);
     // console.log("note : ", note);
     try {
+      console.log("batch to be register : ", batch);
       const res_batch = await axios.patch(`${API_URL}/batches/${id}`, batch);
       console.log("Batch created", res_batch.data);
       if (note.content !== "") {

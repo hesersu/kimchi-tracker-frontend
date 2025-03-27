@@ -6,7 +6,7 @@ const DetailsPage = () => {
   return (
     <main className="main-container">
       <div className="detail-page-container">
-       <h2 className="detail-title">DetailsPage</h2>
+       <h2 className="detail-title">Details of your recipe</h2>
         <BatchDetails />
         <BatchNotes />
       </div>
