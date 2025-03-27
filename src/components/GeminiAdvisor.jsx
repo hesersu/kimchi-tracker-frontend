@@ -11,6 +11,7 @@ import ReactMarkdown from "react-markdown";
 export const GeminiAdvisor = () => {
   const [request, setRequest] = useState("");
   const [answer, setAnswer] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const [batch, setBatch] = useState();
 
@@ -22,12 +23,6 @@ export const GeminiAdvisor = () => {
     setAnswer("");
     setRequest("");
   };
-
-  if (chatOpen) {
-    document.body.classList.add(`active-modal`);
-  } else {
-    document.body.classList.remove(`active-modal`);
-  }
 
   // Get Batch Information & Notes
   let { pathname } = useLocation();
@@ -52,6 +47,7 @@ export const GeminiAdvisor = () => {
   });
 
   const generateContent = async () => {
+    setIsLoading(true);
     let instructions =
       "You are the world famous korean cook Paik Jong-won. Your task is to help me improve my skills in making kimchi and guide me with advice on making kimchi, fermentation process and recipes. Keep your answer short and no longer than 2 paragraphs. Opt for using bullet points and not long sentences. Remember that the user has access to an application called Kimchi Tracker, that allows to track the fermentation process using a diary where the user can document how their kimchi is developing using notes and photos";
     if (batch) {
@@ -71,6 +67,7 @@ export const GeminiAdvisor = () => {
     console.log(instructions);
     console.log(response.text);
     setAnswer(response.text);
+    setIsLoading(false);
   };
   if (batch) {
     console.log("Batch : ", batch);
@@ -90,7 +87,13 @@ export const GeminiAdvisor = () => {
             </button>
           </div>
           <div className="gemini-response">
-            <ReactMarkdown>{answer}</ReactMarkdown>
+            {isLoading ? (
+              <div className="gemini-loader-container">
+                <span className="gemini-loader"></span>
+              </div>
+            ) : (
+              <ReactMarkdown>{answer}</ReactMarkdown>
+            )}
           </div>
           <textarea
             type="text"
