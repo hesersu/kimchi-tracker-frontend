@@ -70,7 +70,7 @@ const BatchNotes = () => {
     setEditNoteId(id);
   };
 
-  console.log(editNoteId);
+  // console.log(editNoteId);
 
   //Front End
   return (

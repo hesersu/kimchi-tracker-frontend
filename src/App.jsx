@@ -9,10 +9,12 @@ import { CreateRecipePage } from "./pages/CreateRecipePage";
 import Header from "./components/Header";
 import NotFoundPage from "./pages/NotFoundPage";
 import GeminiCall from "./pages/GeminiCall";
+import { GeminiAdvisor } from "./components/GeminiAdvisor";
 
 function App() {
   return (
     <>
+      <GeminiAdvisor/>
       <Header />
       <Routes>
         <Route path="/" element={<LandingPage />} />
