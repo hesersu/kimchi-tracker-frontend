@@ -4,6 +4,7 @@ import { GoogleGenAI } from "@google/genai";
 import "../components/GeminiAdvisor.css";
 import axios from "axios";
 import { API_URL } from "../../config/apiConfig";
+import ReactMarkdown from "react-markdown";
 
 export const GeminiAdvisor = () => {
   const [request, setRequest] = useState("");
@@ -60,7 +61,11 @@ export const GeminiAdvisor = () => {
   return (
     <div className="gemini-container">
       <h3 className="gemini-title">The chef tips</h3>
-      <p className="gemini-response">{answer}</p>
+      <div className="gemini-response">
+        <ReactMarkdown>
+          {answer}
+        </ReactMarkdown>
+      </div>
       <textarea
         type="text"
         id="notesContent"

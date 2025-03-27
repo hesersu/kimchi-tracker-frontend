@@ -21,36 +21,43 @@ const BatchDetails = () => {
   }
 
   return (
-    <div>
-      <div className="details-container">
-        <section className="details-image">
-          <img src={oneBatch.imageUrl} alt={oneBatch.name} />
-        </section>
-        <section className="details-description">
-          <h2>{oneBatch.name}</h2>
-          <h3>Recipe</h3>
-          <table className="details-table">
-            <thead>
+    <div className="detail-container">
+      <section className="detail-image-container">
+        <img
+          src={oneBatch.imageUrl}
+          alt={oneBatch.name}
+          className="detail-image"
+        />
+      </section>
+      <section className="detail-description-container">
+        <h2 className="detail-description-title">{oneBatch.name}</h2>
+        <p className="detail-description-mini">
+          (Batch created on : {oneBatch.createdAt})
+        </p>
+        <p>Base on a recipe of: {oneBatch.chef}</p>
+      </section>
+      <section className="detail-ingredient-container">
+          <table className="detail-table">
+            <thead className="detail-table-title">
               <tr>
-                <th>Ingredient</th>
-                <th>Quantity</th>
-                <th>Unit</th>
+                <th className="detail-table-title-item">Ingredient</th>
+                <th className="detail-table-title-item">Quantity</th>
+                <th className="detail-table-title-item">Unit</th>
               </tr>
             </thead>
             <tbody>
               {oneBatch.ingredients.map((ingredient) => {
                 return (
                   <tr key={ingredient.name}>
-                    <td>{ingredient.name}</td>
-                    <td>{ingredient.qty}</td>
-                    <td>{ingredient.unit}</td>
+                    <td className="detail-table-ingredient-item">{ingredient.name}</td>
+                    <td className="detail-table-ingredient-item">{ingredient.qty}</td>
+                    <td className="detail-table-ingredient-item">{ingredient.unit}</td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
         </section>
-      </div>
     </div>
   );
 };
