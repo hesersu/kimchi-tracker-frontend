@@ -38,6 +38,7 @@ const BatchNotes = () => {
     axios
       .delete(`${API_URL}/notes/${id}`)
       .then((res) => {
+        console.log("Recipe deleted. ", res);
         const filteredNotes = notes.filter(
           (oneElement) => oneElement.id !== id
         );

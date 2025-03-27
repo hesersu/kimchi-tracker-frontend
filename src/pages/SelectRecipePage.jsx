@@ -52,6 +52,7 @@ export const SelectRecipePage = () => {
       imageUrl: "",
       createdAt: "",
       recipeBasedOnId: recipeBaseSelected,
+      chef: recipeBaseSelected == 1 ? "Maangchi" : "Paik Jong-Won",
       userId: 1,
       ingredients: ingredientsQty,
     };

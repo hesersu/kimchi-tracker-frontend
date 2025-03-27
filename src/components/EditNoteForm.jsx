@@ -1,14 +1,12 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { API_URL } from "../../config/apiConfig";
-import { useNavigate } from "react-router";
 import "../components/AddNoteForm.css";
 
 const EditNoteForm = ({ oneNoteId, setIsUpdated }) => {
   const [notesDate, setNotesDate] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [notesContent, setNotesContent] = useState("");
-  const nav = useNavigate();
 
   // Getting the current state to preset the form
 

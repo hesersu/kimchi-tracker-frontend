@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router";
 import { API_URL } from "../../config/apiConfig";
 import "../components/AddNoteForm.css";
 
@@ -8,7 +7,6 @@ const AddNoteForm = ({ batchId, setNotes, notes, setModalAdd }) => {
   const [notesDate, setNotesDate] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [notesContent, setNotesContent] = useState("");
-  const navigate = useNavigate();
 
   // Handle Create Note
 
