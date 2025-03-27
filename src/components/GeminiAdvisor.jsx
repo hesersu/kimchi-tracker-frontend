@@ -4,6 +4,7 @@ import { GoogleGenAI } from "@google/genai";
 import "../components/GeminiAdvisor.css";
 import axios from "axios";
 import { API_URL } from "../../config/apiConfig";
+import geminiCabbage from "../assets/gemini-cabbage.png";
 import ReactMarkdown from "react-markdown";
 
 export const GeminiAdvisor = () => {
@@ -76,11 +77,7 @@ export const GeminiAdvisor = () => {
   return (
     <>
       <button className="btn-chat-open" onClick={toggleChat}>
-        <img
-          className="btn-chat-image"
-          src="../src/assets/gemini-cabbage.png"
-          alt=""
-        />
+        <img className="btn-chat-image" src={geminiCabbage} alt="" />
       </button>
       {chatOpen && (
         <div className="gemini-container">
