@@ -132,7 +132,7 @@ button{
   padding-right: 0.5rem;
   background-image: linear-gradient(0deg, #5ccdf080 0.5rem, transparent 1rem);
 }
-.recipe-selector-form{
+.recipe-selector-form, .create-recipe-form{
   display: flex;
   flex-direction: column;
 }
@@ -210,11 +210,10 @@ button{
   width: 100%;
 }
 
-.instruction-container{
-  display: flex;
+.instruction-container, .detail-page-container{
   flex-direction: column;
 }
-.instruction-title{
+.instruction-title, .detail-title{
   margin-bottom: 0.5rem;
   font-size: 1.5rem;
   font-weight: 700;
@@ -254,6 +253,49 @@ button{
 }
 .continue-btn-container-lg{
   width: 90%;
+}
+
+.create-recipe-container{
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+.create-recipe-title{
+  /* background-color: #ee1c27; */
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1d1e1e;
+}
+.create-recipe-input{
+  padding: 0 0.5rem;
+  height: 2rem;
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  background: transparent;
+  border: 2px solid hsla(130, 97%, 24%, 0.5);
+  border-top: none;
+}
+.create-recipe-input:target,
+.create-recipe-input:hover,
+.create-recipe-input:focus,
+.create-recipe-input:focus-visible,
+.create-recipe-input:active,
+.create-recipe-textarea:target,
+.create-recipe-textarea:hover,
+.create-recipe-textarea:focus,
+.create-recipe-textarea:focus-visible,
+.create-recipe-textarea:target{
+  outline: 2px solid hsla(130, 97%, 24%, 0.5);
+}
+.create-recipe-textarea{
+  padding: 0 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  background: transparent;
+  border: 2px solid hsla(130, 97%, 24%, 0.5);
+  border-top: none;
 }
 /*
 

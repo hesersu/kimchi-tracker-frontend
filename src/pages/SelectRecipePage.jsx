@@ -25,7 +25,7 @@ export const SelectRecipePage = () => {
   function handleCabbage(e) {
     const newIngredientsQty = ingredientsQty.map((ingredient, index) => {
       const updatedIngredient = {};
-      if (ingredient.name !== "cabbage") {
+      if (ingredient.name !== "Cabbage") {
         (updatedIngredient.name = ingredient.name),
           (updatedIngredient.qty =
             Math.round((recipe.ingredients[index].qty * Number(e.target.value)) * 10)/10),
@@ -113,7 +113,7 @@ export const SelectRecipePage = () => {
         >
           {ingredientsQty &&
             ingredientsQty.map((ingredient) => {
-              return ingredient.name === "cabbage" ? (
+              return ingredient.name === "Cabbage" ? (
                 <div
                   key={`recipe-selector-${ingredient.name.replace(" ", "-")}`}
                 >

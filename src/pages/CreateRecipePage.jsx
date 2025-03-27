@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { API_URL } from "../../config/apiConfig";
+import sadVegetable from "../assets/sad-vegetables.png";
 
 export const CreateRecipePage = () => {
   const [batch, setBatch] = useState();
@@ -55,47 +56,58 @@ export const CreateRecipePage = () => {
   }
 
   return !batch ? (
-    <div>Batchh not found</div>
-  ) : (
     <div>
-      <div>CreateRecipePage</div>
-      <form onSubmit={handleSubmit} className="container-flex-column-p-1">
-        <input
-          type="text"
-          name="name"
-          id="name"
-          placeholder="Name"
-          value={batch.name}
-          onChange={handleChange}
-          autoComplete="off"
-        />
-        <input
-          type="date"
-          name="createdAt"
-          id="date"
-          value={batch.date}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="imageUrl"
-          id="imageUrl"
-          placeholder="https://...image-URL"
-          value={batch.imageUrl}
-          onChange={handleChange}
-          autoComplete="off"
-        />
-        <textarea
-          name="content"
-          id="noteContent"
-          placeholder="Write you first note about this recipe..."
-          value={note.content}
-          onChange={handleChange}
-          autoComplete="off"
-          rows="5"
-        ></textarea>
-        <button type="submit">Create</button>
-      </form>
+      <h2>Batchh not found</h2>
+      <img src={sadVegetable} alt="sad vegetable" />
     </div>
+  ) : (
+    <main className="main-container">
+      <div className="create-recipe-container">
+        <div className="create-recipe-title">CreateRecipePage</div>
+        <form onSubmit={handleSubmit} className="create-recipe-form bg-yellow">
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Name"
+            value={batch.name}
+            onChange={handleChange}
+            autoComplete="off"
+            className="create-recipe-input"
+          />
+          <input
+            type="date"
+            name="createdAt"
+            id="date"
+            value={batch.date}
+            onChange={handleChange}
+            className="create-recipe-input"
+          />
+          <input
+            type="text"
+            name="imageUrl"
+            id="imageUrl"
+            placeholder="https://...image-URL"
+            value={batch.imageUrl}
+            onChange={handleChange}
+            autoComplete="off"
+            className="create-recipe-input"
+          />
+          <textarea
+            name="content"
+            id="noteContent"
+            placeholder="Write you first note about this recipe..."
+            value={note.content}
+            onChange={handleChange}
+            autoComplete="off"
+            rows="5"
+            className="create-recipe-textarea"
+          ></textarea>
+          <div className="continue-btn-container">
+            <button type="submit" className="continue-btn">Create</button>
+          </div>
+        </form>
+      </div>
+    </main>
   );
 };
