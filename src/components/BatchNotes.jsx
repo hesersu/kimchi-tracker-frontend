@@ -114,7 +114,7 @@ const BatchNotes = () => {
       <div>
         {notes.map((oneNote) => {
           return (
-            <div className="notes-container">
+            <div className="notes-container" key={oneNote.id}>
               <section className="notes-image">
                 <img src={oneNote.imageUrl} alt="" />
               </section>

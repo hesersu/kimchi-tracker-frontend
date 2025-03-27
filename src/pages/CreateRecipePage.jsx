@@ -58,13 +58,13 @@ export const CreateRecipePage = () => {
     <div>Batchh not found</div>
   ) : (
     <div>
-      <div>CreateRecipePage</div>
+      <div>Name your Kimchi batch!</div>
       <form onSubmit={handleSubmit} className="container-flex-column-p-1">
         <input
           type="text"
           name="name"
           id="name"
-          placeholder="Name"
+          placeholder="Batch Name"
           value={batch.name}
           onChange={handleChange}
           autoComplete="off"
@@ -88,13 +88,13 @@ export const CreateRecipePage = () => {
         <textarea
           name="content"
           id="noteContent"
-          placeholder="Write you first note about this recipe..."
+          placeholder="Write you first note about this kimchi batch..."
           value={note.content}
           onChange={handleChange}
           autoComplete="off"
           rows="5"
         ></textarea>
-        <button type="submit">Create</button>
+        <button type="submit">Create Batch</button>
       </form>
     </div>
   );

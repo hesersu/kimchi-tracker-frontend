@@ -28,7 +28,9 @@ export const SelectRecipePage = () => {
       if (ingredient.name !== "cabbage") {
         (updatedIngredient.name = ingredient.name),
           (updatedIngredient.qty =
-            Math.round((recipe.ingredients[index].qty * Number(e.target.value)) * 10)/10),
+            Math.round(
+              recipe.ingredients[index].qty * Number(e.target.value) * 10
+            ) / 10),
           (updatedIngredient.unit = ingredient.unit);
       } else {
         (updatedIngredient.name = ingredient.name),
@@ -151,7 +153,7 @@ export const SelectRecipePage = () => {
 
           <div className="continue-btn-container">
             <button type="submit" className="continue-btn">
-              Create
+              Next
             </button>
           </div>
         </form>

@@ -33,13 +33,13 @@ export const InstructionPage = () => {
       setSteps([...steps, value]);
       // console.log("steps.length", steps.length);
       // console.log("recipe.directions.length", recipe.directions.length);
-      if(steps.length+1 === recipe.directions.length){
+      if (steps.length + 1 === recipe.directions.length) {
         // console.log("TRUE");
         setIsActive(true);
       }
     } else {
       setSteps(steps.filter((step) => step !== value));
-      if(steps.length+1 !== recipe.directions.length){
+      if (steps.length + 1 !== recipe.directions.length) {
         // console.log("FALSE");
         setIsActive(false);
       }
@@ -55,27 +55,44 @@ export const InstructionPage = () => {
       <div className="instruction-container">
         <h2 className="instruction-title">Instructions</h2>
         <p className="instruction-subtitle">
-          Let yourself be guided by <span className="instruction-subtitle-highlight">{recipe.author}</span>
+          Let yourself be guided by{" "}
+          <span className="instruction-subtitle-highlight">
+            {recipe.author}
+          </span>
         </p>
         <ol className="instruction-list">
           {recipe.directions &&
-            recipe.directions.map((step,index) => (
-              <li className="instruction-list-item" key={`step_${index+1}`}>
-                <input type="checkbox" name="step" id={`step_${index+1}`} value={`step_${index+1}`} onChange={handleCheck} className="instruction-list-checkbox"/>
+            recipe.directions.map((step, index) => (
+              <li className="instruction-list-item" key={`step_${index + 1}`}>
+                <input
+                  type="checkbox"
+                  name="step"
+                  id={`step_${index + 1}`}
+                  value={`step_${index + 1}`}
+                  onChange={handleCheck}
+                  className="instruction-list-checkbox"
+                />
                 {step}
               </li>
             ))}
         </ol>
-        {
-        isActive ? 
-        <div className="continue-btn-container continue-btn-container-lg">
-          <button onClick={navigateToNextPage} className="continue-btn">Continue to register</button>
-        </div>
-        :
-        <div className="continue-btn-container continue-btn-container-lg">
-          <button onClick={navigateToNextPage} disabled className="continue-btn">Continue to register</button>
-        </div>
-        }
+        {isActive ? (
+          <div className="continue-btn-container continue-btn-container-lg">
+            <button onClick={navigateToNextPage} className="continue-btn">
+              Next
+            </button>
+          </div>
+        ) : (
+          <div className="continue-btn-container continue-btn-container-lg">
+            <button
+              onClick={navigateToNextPage}
+              disabled
+              className="continue-btn"
+            >
+              Next
+            </button>
+          </div>
+        )}
       </div>
     </main>
   );

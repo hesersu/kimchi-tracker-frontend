@@ -1,20 +1,45 @@
-.gemini-container{
-    z-index: 10;
-    position: fixed;
-    right: 1rem;
-    bottom: 1rem;
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    color: #1d1e1e;
-    background-color: #5ccdf0;
-    border: 2px solid #1d1e1e;
+.btn-chat-open {
+  z-index: 10;
+  position: fixed;
+  width: 5rem;
+  height: 5rem;
+  right: 1rem;
+  bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #1d1e1e;
+  background-color: #5ccdf0;
+  border: 2px solid #1d1e1e;
+  border-radius: 50%;
 }
-.gemini-title{
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-    font-weight: 700;
+
+.btn-chat-image {
+  width: 4rem;
 }
-.gemini-response{
-    margin-bottom: 1rem;
+
+.gemini-container {
+  z-index: 10;
+  position: fixed;
+  width: 30vw;
+  right: 1rem;
+  bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  color: #1d1e1e;
+  background-color: #5ccdf0;
+  border: 2px solid #1d1e1e;
+}
+.gemini-title {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.gemini-response {
+  margin-bottom: 1rem;
+}
+
+body.active-modal {
+  overflow-y: hidden;
 }

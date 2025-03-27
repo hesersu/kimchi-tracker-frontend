@@ -17,22 +17,26 @@ const Header = () => {
       <nav className="nav-container">
         <NavLink to="/">
           <button className="nav-btn">
-            <img src={allRecipeIcon} alt="All recipes icon" className="nav-icon"/>
+            <img
+              src={allRecipeIcon}
+              alt="All recipes icon"
+              className="nav-icon"
+            />
             All recipes
-            </button>
+          </button>
         </NavLink>
         <NavLink to="/select-recipe">
           <button className="nav-btn nav-btn-accent">
-            <img src={addBatchIcon} alt="Add batch icon" className="nav-icon"/>
+            <img src={addBatchIcon} alt="Add batch icon" className="nav-icon" />
             Add batch
-            </button>
+          </button>
         </NavLink>
-        <NavLink to="/">
+        {/* <NavLink to="/">
           <button className="nav-btn">
-            <img src={profileIcon} alt="Profile icon" className="nav-icon"/>
+            <img src={profileIcon} alt="Profile icon" className="nav-icon" />
             Profile
-            </button>
-        </NavLink>
+          </button>
+        </NavLink> */}
       </nav>
     </header>
   );
