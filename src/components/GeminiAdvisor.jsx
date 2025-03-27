@@ -5,6 +5,7 @@ import "../components/GeminiAdvisor.css";
 import axios from "axios";
 import { API_URL } from "../../config/apiConfig";
 import geminiCabbage from "../assets/gemini-cabbage.png";
+import closeChatButton from "../assets/xmark-solid.svg";
 import ReactMarkdown from "react-markdown";
 
 export const GeminiAdvisor = () => {
@@ -78,17 +79,25 @@ export const GeminiAdvisor = () => {
     <>
       <button className="btn-chat-open" onClick={toggleChat}>
         <img className="btn-chat-image" src={geminiCabbage} alt="" />
+        24/7 Kimchi Support
       </button>
       {chatOpen && (
         <div className="gemini-container">
-          <button onClick={toggleChat}>Close Chat</button>
-          <h3 className="gemini-title">The chef tips</h3>
-          <p className="gemini-response">{answer}</p>
+          <div className="gemini-controls">
+            <h3 className="gemini-title">24/7 Kimchi Support</h3>
+            <button className="gemini-close-button" onClick={toggleChat}>
+              <img src={closeChatButton} alt="" />
+            </button>
+          </div>
+          <div className="gemini-response">
+            <ReactMarkdown>{answer}</ReactMarkdown>
+          </div>
           <textarea
             type="text"
             id="notesContent"
             name="notesContent"
             className="gemini-question"
+            placeholder="Ask you question here"
             value={request}
             onChange={(e) => {
               setRequest(e.target.value);
@@ -96,7 +105,7 @@ export const GeminiAdvisor = () => {
             rows="5"
           ></textarea>
           <button onClick={generateContent} className="gemini-btn">
-            Send Request
+            Ask question
           </button>
           {/* <button
         onClick={() => {
