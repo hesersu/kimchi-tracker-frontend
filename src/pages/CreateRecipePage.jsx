@@ -45,7 +45,7 @@ export const CreateRecipePage = () => {
       const res_batch = await axios.patch(`${API_URL}/batches/${id}`, batch);
       console.log("Batch created", res_batch.data);
       if (note.content !== "") {
-        const res_note = await axios.post("${API_URL}/notes", note);
+        const res_note = await axios.post(`${API_URL}/notes`, note);
         console.log("Note created", res_note.data);
       }
       navigate(`/`);

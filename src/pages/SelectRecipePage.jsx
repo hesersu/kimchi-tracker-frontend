@@ -54,7 +54,7 @@ export const SelectRecipePage = () => {
       ingredients: ingredientsQty,
     };
     try {
-      const res = await axios.post("${API_URL}/batches", newBatch);
+      const res = await axios.post(`${API_URL}/batches`, newBatch);
       console.log("New batch in progress...", res.data);
       navigate(`/instructions/${res.data.id}`);
     } catch (error) {
