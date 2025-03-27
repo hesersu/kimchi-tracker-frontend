@@ -1,0 +1,50 @@
+.add-note-form{
+    display: flex;
+    flex-direction: column;
+}
+.add-note-input{
+    padding: 0 0.5rem;
+    height: 2rem;
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+    background: transparent;
+    border: 2px solid hsla(130, 97%, 24%, 0.5);
+    border-top: none;
+}
+.add-note-textarea{
+    padding: 0 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+    background: transparent;
+    border: 2px solid hsla(130, 97%, 24%, 0.5);
+    border-top: none;
+}
+.add-note-input:target,
+.add-note-input:hover,
+.add-note-input:focus,
+.add-note-input:focus-visible,
+.add-note-input:active,
+.add-note-textareaa:target,
+.add-note-textarea:hover,
+.add-note-textarea:focus,
+.add-note-textarea:focus-visible,
+.add-note-textarea:target{
+  outline: 2px solid hsla(130, 97%, 24%, 0.5);
+}
+.add-note-form-btn{
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  margin-top: 1rem;
+  padding: 0.5rem 3rem;
+  width:fit-content;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #1d1e1e;
+  background-color: transparent;
+  border: 2px solid hsla(130, 97%, 24%, 0.5);
+border-top: none;
+  overflow: hidden;
+  cursor: pointer;
+}

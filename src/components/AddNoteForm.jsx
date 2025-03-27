@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { API_URL } from "../../config/apiConfig";
+import "../components/AddNoteForm.css";
 
 const AddNoteForm = ({ batchId, setNotes, notes, setModalAdd }) => {
   const [notesDate, setNotesDate] = useState("");
@@ -32,37 +33,38 @@ const AddNoteForm = ({ batchId, setNotes, notes, setModalAdd }) => {
   }
 
   return (
-    <div>
-      <section className="add-notes-container">
-        <form onSubmit={handleCreateNote}>
-          <label>Today's date</label>
-          <input
-            type="date"
-            id="notesDate"
-            className="notesDate"
-            value={notesDate}
-            onChange={(e) => setNotesDate(e.target.value)}
-          />
-          <label>Image URL</label>
-          <input
-            type="text"
-            id="imageUrl"
-            className="imageUrl"
-            value={imageUrl}
-            onChange={(e) => setImageUrl(e.target.value)}
-          />
-          <label>Note Text</label>
-          <input
-            type="text"
-            id="notesContent"
-            className="notesContent"
-            value={notesContent}
-            onChange={(e) => setNotesContent(e.target.value)}
-          />
-          <button type="submit">Add Note</button>
-        </form>
-      </section>
-    </div>
+    <form onSubmit={handleCreateNote} className="add-note-form">
+      <input
+        type="date"
+        id="notesDate"
+        name="notesDate"
+        className="add-note-input"
+        value={notesDate}
+        onChange={(e) => setNotesDate(e.target.value)}
+        autoComplete="off"
+      />
+      <input
+        type="text"
+        id="imageUrl"
+        name="imageUrl"
+        className="add-note-input"
+        value={imageUrl}
+        onChange={(e) => setImageUrl(e.target.value)}
+        autoComplete="off"
+        placeholder="https://...image-URL"
+      />
+      <textarea 
+        id="notesContent"
+        name="notesContent"
+        className="add-note-textarea"
+        value={notesContent}
+        onChange={(e) => setNotesContent(e.target.value)}
+        autoComplete="off"
+        rows="5"
+        placeholder="Write your note here...">
+      </textarea>
+      <button type="submit" className="add-note-form-btn">Add Note</button>
+    </form>
   );
 };
 

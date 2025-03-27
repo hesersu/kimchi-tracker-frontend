@@ -5,6 +5,11 @@ import axios from "axios";
 import AddNoteForm from "./AddNoteForm";
 import EditNoteForm from "./EditNoteForm";
 import { API_URL } from "../../config/apiConfig";
+import defaultKimchi from "../assets/kimchi-default.png";
+import addNoteIcon from "../assets/add-batch-icon.svg";
+import viewDetailIcon from "../assets/view-detail-icon.svg";
+import deleteBatchIcon from "../assets/delete-icon.svg";
+import closeButtonIcon from "../assets/xmark-solid.svg";
 
 const BatchNotes = () => {
   const { batchId } = useParams();
@@ -13,6 +18,8 @@ const BatchNotes = () => {
   const [modalEdit, setModalEdit] = useState(false);
   const [editNoteId, setEditNoteId] = useState();
   const [isUpdated, setIsUpdated] = useState(false);
+
+  const defaultImage = defaultKimchi;
 
   useEffect(() => {
     axios
@@ -75,17 +82,19 @@ const BatchNotes = () => {
   //Front End
   return (
     <>
-      <h3>Here are my notes!</h3>
-      <button className="btn-modal-open" onClick={toggleModalAdd}>
-        Add Note
-      </button>
+      <div className="add-note-btn-container">
+        <button className="add-note-btn" onClick={toggleModalAdd}>
+          <img src={addNoteIcon} alt="add icon" className="add-note-btn-img" />
+          Add Note
+        </button>
+      </div>
 
       {/* Add Modal Part */}
       {modalAdd && (
         <div className="modal-container">
           <div className="modal-overlay"></div>
           <div className="modal-content">
-            <h5>Add your notes</h5>
+            <p className="modal-title">Add your notes</p>
             <AddNoteForm
               batchId={batchId}
               setNotes={setNotes}
@@ -93,7 +102,7 @@ const BatchNotes = () => {
               setModalAdd={setModalAdd}
             />
             <button className="btn-modal-close" onClick={toggleModalAdd}>
-              Close Modal
+              <img src={closeButtonIcon} alt="close button icon" className="card-icon" />
             </button>
           </div>
         </div>
@@ -104,29 +113,41 @@ const BatchNotes = () => {
         <div className="modal-container">
           <div className="modal-overlay"></div>
           <div className="modal-content">
-            <h5>Edit your notes</h5>
+            <p className="modal-title">Edit your note</p>
             <EditNoteForm oneNoteId={editNoteId} setIsUpdated={setIsUpdated} />
-            <button onClick={toggleModalEdit}>Close Modal</button>
+            <button className="btn-modal-close" onClick={toggleModalEdit}>
+              <img src={closeButtonIcon} alt="close button icon" className="card-icon" />
+            </button>
           </div>
         </div>
       )}
 
-      <div>
+      <div className="note-list-container">
         {notes.map((oneNote) => {
           return (
-            <div className="notes-container" key={oneNote.id}>
-              <section className="notes-image">
-                <img src={oneNote.imageUrl} alt="" />
+            <div className="note-container" key={oneNote.id}>
+              <section className="note-image-container">
+                <img
+                  src={oneNote.imageUrl ? oneNote.imageUrl : defaultImage}
+                  alt="note image"
+                  className="note-image"
+                />
               </section>
-              <section className="notes-description">
-                <h4>{oneNote.date}</h4>
-                <p>{oneNote.content}</p>
-                <button onClick={() => handleDeleteNotes(oneNote.id)}>
-                  Delete Note
-                </button>
-                <button onClick={() => setEditNoteProps(oneNote.id)}>
-                  Edit Note
-                </button>
+              <section className="note-description">
+                <p className="note-description-title">
+                  Note dated {oneNote.date}
+                </p>
+                <p className="note-description-content">{oneNote.content}</p>
+                <div className="card-controls">
+                  <button onClick={() => setEditNoteProps(oneNote.id)} className="card-btn">
+                    <img src={viewDetailIcon} alt="View details icon" className="card-icon"/>
+                    Edit Note
+                  </button>
+                  <button onClick={() => handleDeleteNotes(oneNote.id)} className="card-btn btn-danger">
+                     <img src={deleteBatchIcon} alt="Delete batch icon" className="card-icon"/>
+                    Delete Note
+                  </button>
+                </div>
               </section>
             </div>
           );

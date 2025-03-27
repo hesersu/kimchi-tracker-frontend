@@ -2,9 +2,11 @@ import "../components/BatchCard.css";
 import { useNavigate } from "react-router";
 import viewDetailIcon from "../assets/view-detail-icon.svg";
 import deleteBatchIcon from "../assets/delete-icon.svg";
+import defaultKimchi from "../assets/kimchi-default.png";
 
 const BatchCard = ({ batchData, handleDeleteBatch }) => {
   // console.log(batchData);
+  const defaultImage = defaultKimchi;
   const navigate = useNavigate();
   function handleDetail(id){
     navigate(`/details/${id}`);
@@ -14,7 +16,7 @@ const BatchCard = ({ batchData, handleDeleteBatch }) => {
       <div className="card-content">
         <section className="card-image-container">
           <img
-            src={batchData.imageUrl}
+            src={batchData.imageUrl ? batchData.imageUrl : defaultImage}
             alt="One Kimchi"
             className="card-image"
           />
