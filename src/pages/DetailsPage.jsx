@@ -4,13 +4,14 @@ import BatchNotes from "../components/BatchNotes";
 
 const DetailsPage = () => {
   return (
-    <div>
-      DetailsPage
-      <div>
+    <main className="main-container">
+      <div className="detail-page-container">
+       <h2 className="detail-title">DetailsPage</h2>
         <BatchDetails />
         <BatchNotes />
       </div>
-    </div>
+    </main>
+    
   );
 };
 

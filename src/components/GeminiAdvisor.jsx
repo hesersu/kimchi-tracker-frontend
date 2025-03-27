@@ -4,6 +4,7 @@ import { GoogleGenAI } from "@google/genai";
 import "../components/GeminiAdvisor.css";
 import axios from "axios";
 import { API_URL } from "../../config/apiConfig";
+import ReactMarkdown from "react-markdown";
 
 export const GeminiAdvisor = () => {
   const [request, setRequest] = useState("");
@@ -81,7 +82,6 @@ export const GeminiAdvisor = () => {
           alt=""
         />
       </button>
-
       {chatOpen && (
         <div className="gemini-container">
           <button onClick={toggleChat}>Close Chat</button>

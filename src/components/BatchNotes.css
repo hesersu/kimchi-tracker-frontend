@@ -1,8 +1,6 @@
-.background-green{
-  background-color: green;
-}
+
 .notes-container {
-  width: 100%;
+  /* width: 100%; */
   border-style: solid;
   padding: 2%;
   display: flex;
