@@ -63,7 +63,7 @@ export const CreateRecipePage = () => {
   ) : (
     <main className="main-container">
       <div className="create-recipe-container">
-        <div className="create-recipe-title">CreateRecipePage</div>
+        <div className="create-recipe-title">Name your Kimchi batch!</div>
         <form onSubmit={handleSubmit} className="create-recipe-form bg-yellow">
           <input
             type="text"

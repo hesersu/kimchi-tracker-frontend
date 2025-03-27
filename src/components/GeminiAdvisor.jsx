@@ -12,6 +12,21 @@ export const GeminiAdvisor = () => {
 
   const [batch, setBatch] = useState();
 
+  const [chatOpen, setChatOpen] = useState(false);
+
+  // Handle opening and closing of chat
+  const toggleChat = () => {
+    setChatOpen(!chatOpen);
+    setAnswer("");
+    setRequest("");
+  };
+
+  if (chatOpen) {
+    document.body.classList.add(`active-modal`);
+  } else {
+    document.body.classList.remove(`active-modal`);
+  }
+
   // Get Batch Information & Notes
   let { pathname } = useLocation();
 
@@ -59,34 +74,42 @@ export const GeminiAdvisor = () => {
     console.log("Batch : ", batch);
   }
   return (
-    <div className="gemini-container">
-      <h3 className="gemini-title">The chef tips</h3>
-      <div className="gemini-response">
-        <ReactMarkdown>
-          {answer}
-        </ReactMarkdown>
-      </div>
-      <textarea
-        type="text"
-        id="notesContent"
-        name="notesContent"
-        className="gemini-question"
-        value={request}
-        onChange={(e) => {
-          setRequest(e.target.value);
-        }}
-        rows="5"
-      ></textarea>
-      <button onClick={generateContent} className="gemini-btn">
-        Send Request
+    <>
+      <button className="btn-chat-open" onClick={toggleChat}>
+        <img
+          className="btn-chat-image"
+          src="../src/assets/gemini-cabbage.png"
+          alt=""
+        />
       </button>
-      {/* <button
+      {chatOpen && (
+        <div className="gemini-container">
+          <button onClick={toggleChat}>Close Chat</button>
+          <h3 className="gemini-title">The chef tips</h3>
+          <p className="gemini-response">{answer}</p>
+          <textarea
+            type="text"
+            id="notesContent"
+            name="notesContent"
+            className="gemini-question"
+            value={request}
+            onChange={(e) => {
+              setRequest(e.target.value);
+            }}
+            rows="5"
+          ></textarea>
+          <button onClick={generateContent} className="gemini-btn">
+            Send Request
+          </button>
+          {/* <button
         onClick={() => {
           console.log("batch!!! => ", batch);
         }}
       >
         check batch
       </button> */}
-    </div>
+        </div>
+      )}
+    </>
   );
 };

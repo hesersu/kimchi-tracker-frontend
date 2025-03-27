@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { IngredientInput } from "./IngredientInput";
+import { API_URL } from "../../config/apiConfig";
 
 export const IngredientForm = ({ selectedRecipe }) => {
   console.log(selectedRecipe);
