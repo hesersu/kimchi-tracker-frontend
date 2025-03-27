@@ -112,25 +112,27 @@ const BatchNotes = () => {
       )}
 
       <div>
-        {notes.map((oneNote) => {
-          return (
-            <div className="notes-container" key={oneNote.id}>
-              <section className="notes-image">
-                <img src={oneNote.imageUrl} alt="" />
-              </section>
-              <section className="notes-description">
-                <h4>{oneNote.date}</h4>
-                <p>{oneNote.content}</p>
-                <button onClick={() => handleDeleteNotes(oneNote.id)}>
-                  Delete Note
-                </button>
-                <button onClick={() => setEditNoteProps(oneNote.id)}>
-                  Edit Note
-                </button>
-              </section>
-            </div>
-          );
-        })}
+        {notes
+          .toSorted((a, b) => new Date(b.date) - new Date(a.date))
+          .map((oneNote) => {
+            return (
+              <div className="notes-container" key={oneNote.id}>
+                <section className="notes-image">
+                  <img src={oneNote.imageUrl} alt="" />
+                </section>
+                <section className="notes-description">
+                  <h4>{oneNote.date}</h4>
+                  <p>{oneNote.content}</p>
+                  <button onClick={() => handleDeleteNotes(oneNote.id)}>
+                    Delete Note
+                  </button>
+                  <button onClick={() => setEditNoteProps(oneNote.id)}>
+                    Edit Note
+                  </button>
+                </section>
+              </div>
+            );
+          })}
       </div>
     </>
   );

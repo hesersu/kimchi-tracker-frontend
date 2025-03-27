@@ -31,12 +31,14 @@ export const LandingPage = () => {
   return (
     <main className="main-container">
       <div className="card-list-container">
-        {batches.map((oneBatch) => (
-          <BatchCard
-            batchData={oneBatch}
-            handleDeleteBatch={handleDeleteBatch}
-          />
-        ))}
+        {batches
+          .toSorted((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+          .map((oneBatch) => (
+            <BatchCard
+              batchData={oneBatch}
+              handleDeleteBatch={handleDeleteBatch}
+            />
+          ))}
       </div>
     </main>
   );
