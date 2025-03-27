@@ -121,9 +121,11 @@ const BatchNotes = () => {
           </div>
         </div>
       )}
-
+      
       <div className="note-list-container">
-        {notes.map((oneNote) => {
+        {notes
+         .toSorted((a, b) => new Date(b.date) - new Date(a.date))
+         .map((oneNote) => {
           return (
             <div className="note-container" key={oneNote.id}>
               <section className="note-image-container">

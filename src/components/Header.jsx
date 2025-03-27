@@ -31,12 +31,12 @@ const Header = () => {
             Add batch
           </button>
         </NavLink>
-        {/* <NavLink to="/">
+        <NavLink to="/">
           <button className="nav-btn">
             <img src={profileIcon} alt="Profile icon" className="nav-icon" />
             Profile
           </button>
-        </NavLink> */}
+        </NavLink>
       </nav>
     </header>
   );

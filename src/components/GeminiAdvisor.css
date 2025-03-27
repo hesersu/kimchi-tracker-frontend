@@ -1,17 +1,17 @@
 .btn-chat-open {
   z-index: 10;
   position: fixed;
-  width: 5rem;
-  height: 5rem;
+  width: 7rem;
+  height: 7rem;
   right: 1rem;
-  bottom: 1rem;
+  bottom: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   color: #1d1e1e;
-  background-color: #5ccdf0;
-  border: 2px solid #1d1e1e;
-  border-radius: 50%;
+  background-color: #9acddd;
+  border: 1px solid #1d1e1e;
+  border-radius: 5px;
 }
 
 .btn-chat-image {
@@ -21,25 +21,91 @@
 .gemini-container {
   z-index: 10;
   position: fixed;
-  width: 30vw;
+  width: 83%;
   right: 1rem;
-  bottom: 1rem;
+  bottom: 2rem;
   display: flex;
   flex-direction: column;
   padding: 1rem;
   color: #1d1e1e;
-  background-color: #5ccdf0;
-  border: 2px solid #1d1e1e;
+  background-color: #9acddd;
+  border: 1px solid #1d1e1e;
+  border-radius: 5px;
 }
-.gemini-title {
-  margin-bottom: 0.5rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-.gemini-response {
+
+.gemini-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 1rem;
 }
 
-body.active-modal {
-  overflow-y: hidden;
+.gemini-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.gemini-close-button {
+  width: 2rem;
+  background: none;
+  border: none;
+}
+
+.gemini-loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gemini-loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid hsla(130, 97%, 24%, 0.5);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  margin: auto;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.gemini-response {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.gemini-question {
+  padding: 0 0.5rem;
+  height: 3rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.25rem;
+  background: transparent;
+  border: 2px solid hsla(130, 97%, 24%, 0.5);
+  border-top: none;
+}
+
+.gemini-question:hover,
+.gemini-question:target,
+.gemini-question:focus,
+.gemini-question:focus-visible,
+.gemini-question:target {
+  outline: 2px solid hsla(130, 97%, 24%, 0.5);
+}
+
+.gemini-close-button {
+  font-size: 1rem;
 }
