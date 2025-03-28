@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import NotFoundPage from "./pages/NotFoundPage";
 import GeminiCall from "./pages/GeminiCall";
 import { GeminiAdvisor } from "./components/GeminiAdvisor";
+import { Footer } from "./components/Footer";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/gemini-call" element={<GeminiCall />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <Footer/>
     </>
   );
 }
