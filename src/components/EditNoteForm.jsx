@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { API_URL } from "../../config/apiConfig";
 import "../components/AddNoteForm.css";
 
-const EditNoteForm = ({ oneNoteId, setIsUpdated, toggleModalEdit }) => {
+const EditNoteForm = ({ oneNoteId, setIsUpdated, toggleModalEdit, showToast }) => {
   const [notesDate, setNotesDate] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [notesContent, setNotesContent] = useState("");
@@ -37,7 +37,9 @@ const EditNoteForm = ({ oneNoteId, setIsUpdated, toggleModalEdit }) => {
         `${API_URL}/notes/${oneNoteId}`,
         editNote
       );
-      console.log("Done", response.data);
+      // console.log("Done", response.data);
+      console.log("Edit note ", response);
+      response.status == 200 ? showToast("Note update.", "success") : showToast(response.statusText, "danger")
       setIsUpdated(true);
       toggleModalEdit();
     } catch (err) {

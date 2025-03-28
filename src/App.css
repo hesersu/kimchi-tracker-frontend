@@ -87,6 +87,7 @@ svg{
 }
 
 #root {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -318,6 +319,15 @@ svg{
   background: transparent;
   border: 2px solid var(--main-border-selected);
   border-top: none;
+}
+.not-found-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.not-found-img{
+  width: 50%;
 }
 /*
 

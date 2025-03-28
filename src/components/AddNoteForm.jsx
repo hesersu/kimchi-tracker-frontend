@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { API_URL } from "../../config/apiConfig";
 import "../components/AddNoteForm.css";
 
-const AddNoteForm = ({ batchId, setNotes, notes, setModalAdd }) => {
+const AddNoteForm = ({ batchId, setNotes, notes, setModalAdd, showToast }) => {
   const [notesDate, setNotesDate] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [notesContent, setNotesContent] = useState("");
@@ -22,7 +22,9 @@ const AddNoteForm = ({ batchId, setNotes, notes, setModalAdd }) => {
     };
     try {
       const response = await axios.post(`${API_URL}/notes/`, newNote);
-      console.log("Done", response.data);
+      // console.log("Done", response.data);
+      console.log("Add Note Res", response);
+      response.status == 201 ? showToast("Note created.", "success") : showToast(response.statusText, "danger")
       setNotes([response.data, ...notes]);
       setModalAdd(false);
     } catch (err) {

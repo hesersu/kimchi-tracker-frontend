@@ -2,10 +2,16 @@ import React from "react";
 
 const NotFoundPage = () => {
   return (
-    <div>
-      <h2>Oh, no! Page not found!</h2>
-      <img src="../src/assets/sad-vegetables.png" alt="sad vegetables" />
-    </div>
+    <main className="main-container">
+      <div className="not-found-container">
+        <h2>Oh, no! Page not found!</h2>
+        <img
+          src="../src/assets/sad-vegetables.png"
+          alt="sad vegetables"
+          className="not-found-img"
+        />
+      </div>
+    </main>
   );
 };
 

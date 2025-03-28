@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router";
 import { API_URL } from "../../config/apiConfig";
 import sadVegetable from "../assets/sad-vegetables.png";
 
-export const CreateRecipePage = () => {
+export const CreateRecipePage = ({showToast}) => {
   const [batch, setBatch] = useState();
   const [note, setNote] = useState({
     batchId: null,
@@ -46,12 +46,15 @@ export const CreateRecipePage = () => {
     // console.log("batch : ", batch);
     // console.log("note : ", note);
     try {
-      console.log("batch to be register : ", batch);
+      // console.log("batch to be register : ", batch);
       const res_batch = await axios.patch(`${API_URL}/batches/${id}`, batch);
-      console.log("Batch created", res_batch.data);
+      console.log("Res => ", res_batch);
+      // console.log("Batch created", res_batch.data);
+      res_batch.status == 200 ? showToast("Batch created.", "success") : showToast(res_batch.statusText, "danger")
       if (note.content !== "") {
         const res_note = await axios.post(`${API_URL}/notes`, note);
-        console.log("Note created", res_note.data);
+        console.log("Note Res => ", res_note);
+        // console.log("Note created", res_note.data);
       }
       navigate(`/`);
     } catch (err) {

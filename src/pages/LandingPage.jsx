@@ -3,7 +3,7 @@ import BatchCard from "../components/BatchCard";
 import axios from "axios";
 import { API_URL } from "../../config/apiConfig";
 
-export const LandingPage = () => {
+export const LandingPage = ({showToast}) => {
   const [batches, setBatches] = useState([]);
   const [userId, setUserId] = useState(1);
 
@@ -19,7 +19,7 @@ export const LandingPage = () => {
     axios
       .delete(`${API_URL}/batches/${id}`)
       .then((res) => {
-        console.log(res.data);
+        res.status == 200 ? showToast("Batch deleted.", "success") : showToast(res.statusText, "danger")
         const filteredBatches = batches.filter(
           (oneElement) => oneElement.id !== id
         );
