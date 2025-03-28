@@ -1,0 +1,29 @@
+.dark-mode-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0.5rem;
+    padding: 0.25rem;
+    width: fit-content;
+    height: fit-content;
+    background: transparent;
+    border: none;
+}
+
+.dark-mode-btn-footer {
+    display: flex;
+    margin: 0 1rem;
+}
+
+.dark-mode-btn svg {
+    height: 1.3rem;
+}
+
+@media (min-width: 1024px) {
+    .dark-mode-btn {
+        display: flex;
+    }
+    .dark-mode-btn-footer {
+        display: none;
+    }
+}

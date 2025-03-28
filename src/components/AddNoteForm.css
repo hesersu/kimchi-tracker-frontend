@@ -1,3 +1,4 @@
+
 .add-note-form{
     display: flex;
     flex-direction: column;
@@ -8,7 +9,7 @@
     font-size: 1rem;
     margin-bottom: 1.25rem;
     background: transparent;
-    border: 2px solid hsla(130, 97%, 24%, 0.5);
+    border: 2px solid var(--main-border-selected);
     border-top: none;
 }
 .add-note-textarea{
@@ -16,7 +17,7 @@
     font-size: 1rem;
     margin-bottom: 1.25rem;
     background: transparent;
-    border: 2px solid hsla(130, 97%, 24%, 0.5);
+    border: 2px solid var(--main-border-selected);
     border-top: none;
 }
 .add-note-input:target,
@@ -29,7 +30,7 @@
 .add-note-textarea:focus,
 .add-note-textarea:focus-visible,
 .add-note-textarea:target{
-  outline: 2px solid hsla(130, 97%, 24%, 0.5);
+  outline: 2px solid var(--main-border-selected);
 }
 .add-note-form-btn{
   display: flex;
@@ -41,9 +42,9 @@
   font-size: 1.2rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: #1d1e1e;
+  color: var(--main-color);
   background-color: transparent;
-  border: 2px solid hsla(130, 97%, 24%, 0.5);
+  border: 2px solid var(--main-border-selected);
 border-top: none;
   overflow: hidden;
   cursor: pointer;

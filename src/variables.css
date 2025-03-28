@@ -1,0 +1,26 @@
+:root {
+    color-scheme: light dark;
+    /* --- Colors --- */
+    --main-background: #d9d6d2;
+    --main-color: #1d1e1e;
+    --main-border-100: hsla(130, 97%, 24%, 1);
+    --main-border: hsla(180, 2%, 12%, 0.5);
+    --main-border-selected: hsla(130, 97%, 24%, 0.5);
+    --main-linear-gradient: linear-gradient(0deg, #5ccdf080 0.5rem, transparent 1rem);
+    --main-linear-gradient-2: linear-gradient(0deg, #5ccdf080 0.5rem, transparent 1.2rem);
+    --main-linear-gradient-3: linear-gradient(0deg, #5ccdf080 0.1rem, transparent 0.7rem);
+    --main-linear-gradient-3-danger: linear-gradient(0deg, #ee1c2780 0.1rem, transparent 0.7rem);
+    --main-accent: #5ccdf0;
+    --main-accent-danger: #ee1c27;
+    --main-modal-overlay: hsla(180, 2%, 12%, 0.6);
+}
+
+[data-theme="dark"] {
+    --main-background: #1d1e1e;
+    --main-color: #d9d6d2;
+    --main-border: hsla(34, 8%, 84%, 0.5);
+    --main-linear-gradient: linear-gradient(0deg, #00c3ff40 0.5rem, transparent 1rem);
+    --main-linear-gradient-2: linear-gradient(0deg, #00c3ff40 0.5rem, transparent 1.2rem);
+    --main-linear-gradient-3: linear-gradient(0deg, #00c3ff40 0.1rem, transparent 0.7rem);
+    --main-modal-overlay: hsla(34, 8%, 84%, 0.6);
+}

@@ -1,9 +1,11 @@
 import "../components/Footer.css";
+import { DarkModeToggle } from "./DarkModeToggle";
 
 export const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
+        <DarkModeToggle />
         <p>
           &copy; 2025 - Imagined by{" "}
           <a
