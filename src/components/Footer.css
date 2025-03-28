@@ -1,0 +1,16 @@
+.footer {
+    padding-top: 3rem;
+}
+
+.footer-container {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid hsla(130, 97%, 24%, 0.5);
+    font-size: 0.8rem;
+}
+
+.footer-link {
+    color: #1d1e1e;
+    font-weight: 600;
+}
