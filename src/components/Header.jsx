@@ -10,9 +10,13 @@ import { NavLink } from "react-router";
 const Header = () => {
   return (
     <header className="header-container">
+      
       <div className="logo-container">
+      <NavLink to="/">
         <img src={logo} alt="Kimchi tracker logo" className="logo" />
         <h2 className="logo-title">Kimchi tracker</h2>
+      </NavLink>
+        
       </div>
       <nav className="nav-container">
         <NavLink to="/">

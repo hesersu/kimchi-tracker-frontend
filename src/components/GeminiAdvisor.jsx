@@ -107,9 +107,12 @@ export const GeminiAdvisor = () => {
             }}
             rows="5"
           ></textarea>
-          <button onClick={generateContent} className="gemini-btn">
-            Ask question
-          </button>
+          <div className="gemini-btn-container">
+            <button onClick={generateContent} className="gemini-btn">
+              Ask question
+            </button>
+          </div>
+
           {/* <button
         onClick={() => {
           console.log("batch!!! => ", batch);
