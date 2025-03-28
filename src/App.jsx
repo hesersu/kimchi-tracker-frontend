@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import "./variables.css";
 import "./App.css";
 import { Routes, Route } from "react-router";
 import { LandingPage } from "./pages/LandingPage";

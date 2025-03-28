@@ -9,7 +9,7 @@
   flex-direction: column;
   align-items: center;
   color: #1d1e1e;
-  background-color: #9acddd;
+  background-color: var(--main-accent);
   border: 1px solid #1d1e1e;
   border-radius: 5px;
 }
@@ -29,7 +29,7 @@
   align-items: center;
   padding: 1rem;
   color: #1d1e1e;
-  background-color: #9acddd;
+  background-color: var(--main-accent);
   border: 1px solid #1d1e1e;
   border-radius: 5px;
 }
@@ -65,7 +65,7 @@
 .gemini-loader {
   width: 48px;
   height: 48px;
-  border: 5px solid hsla(130, 97%, 24%, 0.5);
+  border: 5px solid var(--main-border-selected);
   border-bottom-color: transparent;
   border-radius: 50%;
   display: inline-block;
@@ -97,8 +97,9 @@
   width: 100%;
   height: 3rem;
   font-size: 1rem;
+  color: #1d1e1e;
   background: transparent;
-  border: 2px solid hsla(130, 97%, 24%, 0.5);
+  border: 2px solid var(--main-border-selected);
   border-top: none;
 }
 
@@ -107,7 +108,7 @@
 .gemini-question:focus,
 .gemini-question:focus-visible,
 .gemini-question:target {
-  outline: 2px solid hsla(130, 97%, 24%, 0.5);
+  outline: 2px solid var(--main-border-selected);
 }
 
 .gemini-close-button {
@@ -117,16 +118,16 @@
   display: flex;
   justify-content: center;
   width: 80%;
-  border-bottom: 2px solid hsla(130, 97%, 24%, 0.5);
+  border-bottom: 2px solid var(--main-border-selected);
 }
 .gemini-btn{
   padding: 0 0.5rem;
   height: 2rem;
   font-size: 1rem;
   font-weight: 700;
-  /* margin-bottom: 1.25rem; */
+  color: #1d1e1e;
   background: transparent;
-  border: 2px solid hsla(130, 97%, 24%, 0.5);
+  border: 2px solid var(--main-border-selected);
   border-top: none;
   border-bottom: none;
 }

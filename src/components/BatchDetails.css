@@ -37,11 +37,11 @@
 }
 .detail-table {
   width: 100%;
-  border-bottom: 1px solid hsla(130, 97%, 24%, 1);
+  border-bottom: 1px solid var(--main-border-100);
 }
 .detail-table-title{
   font-weight: 700;
-  border-bottom: 1px solid hsla(130, 97%, 24%, 1);
+  border-bottom: 1px solid var(--main-border-100);
 }
 .detail-table-title-item{
   padding-bottom: 1rem;
