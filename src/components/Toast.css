@@ -1,0 +1,38 @@
+.toast-container {
+    z-index: 10;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    padding: 1rem;
+    padding-right: 0.5rem;
+    width: fit-content;
+    color: hsl(130, 97%, 24%);
+    background-color: hsl(130, 76%, 79%);;
+    border: 2px solid hsl(130, 97%, 24%);;
+    border-radius: 0.5rem;
+}
+
+.toast-btn {
+    /* position: absolute;
+    top: 0.5rem;
+    right: 0.5rem; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: fit-content;
+    color: hsla(130, 97%, 24%, 1);
+    background-color: transparent;
+    border: none;
+}
+
+.toast-danger {
+    color: hsl(357, 86%, 52%);
+    background-color: hsl(357, 84%, 82%);
+    border: 2px solid hsl(357, 86%, 52%);
+}
+
+.toast-danger .toast-btn {
+    color: hsl(357, 86%, 52%);
+}
