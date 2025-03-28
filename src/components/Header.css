@@ -3,21 +3,33 @@
   flex-direction: column;
   justify-content: space-between;
   padding-top: 1rem;
-  height: fit-content;  
+  height: fit-content;
   border-bottom: 2px solid hsla(130, 97%, 24%, 0.5);
 }
-.logo-container{
+
+.logo-container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   padding: 0 1rem 0 1rem;
 }
-.logo{
+
+.logo-container a {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1rem 0 1rem;
+}
+
+.logo {
   width: 3rem;
   height: 3rem;
 }
-.logo-title{
+
+.logo-title {
   padding: 0 0.25rem;
   width: fit-content;
   font-size: 1.8rem;
@@ -26,13 +38,15 @@
   color: #1d1e1e;
   background-image: linear-gradient(0deg, #5ccdf080 0.5rem, transparent 1rem);
 }
-.nav-container{
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-top: 1rem;
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
 }
-.nav-btn{
+
+.nav-btn {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -43,14 +57,16 @@ margin-top: 1rem;
   text-decoration: none;
   text-transform: uppercase;
   background: none;
-  border:none;
+  border: none;
   overflow: hidden;
 }
-.nav-btn-accent{
+
+.nav-btn-accent {
   border-left: 2px solid hsla(130, 97%, 24%, 0.5);
   border-right: 2px solid hsla(130, 97%, 24%, 0.5);
 }
-.nav-btn::after{
+
+.nav-btn::after {
   content: "";
   position: absolute;
   left: 0;
@@ -60,22 +76,30 @@ margin-top: 1rem;
   background-image: linear-gradient(0deg, #5ccdf080 0.5rem, transparent 1.2rem);
   transition: width 0.4s ease-in-out;
 }
-.nav-btn:target::after, .nav-btn:hover::after, .nav-btn:focus::after, .nav-btn:focus-visible::after, .nav-btn:active::after{
+
+.nav-btn:target::after,
+.nav-btn:hover::after,
+.nav-btn:focus::after,
+.nav-btn:focus-visible::after,
+.nav-btn:active::after {
   width: 100%;
 }
-.nav-icon{
+
+.nav-icon {
   height: 1rem;
 }
 
-@media (min-width: 768px){
+@media (min-width: 768px) {
   .header-container {
     flex-direction: row;
     padding-right: 1rem;
   }
-  .nav-container{
+
+  .nav-container {
     margin-top: 0;
   }
-  .nav-btn{
+
+  .nav-btn {
     min-width: 7.25rem;
   }
 }

@@ -62,6 +62,7 @@ const BatchNotes = () => {
   // Handle Modal Edit
   const toggleModalEdit = () => {
     setModalEdit(!modalEdit);
+    isUpdated && setIsUpdated(false);
     console.log(modalEdit);
   };
 
@@ -115,7 +116,7 @@ const BatchNotes = () => {
           <div className="modal-overlay"></div>
           <div className="modal-content">
             <p className="modal-title">Edit your note</p>
-            <EditNoteForm oneNoteId={editNoteId} setIsUpdated={setIsUpdated} />
+            <EditNoteForm oneNoteId={editNoteId} setIsUpdated={setIsUpdated} toggleModalEdit={toggleModalEdit}/>
             <button className="btn-modal-close" onClick={toggleModalEdit}>
               <img src={closeButtonIcon} alt="close button icon" className="card-icon" />
             </button>

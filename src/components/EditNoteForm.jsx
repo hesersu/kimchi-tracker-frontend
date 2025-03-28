@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { API_URL } from "../../config/apiConfig";
 import "../components/AddNoteForm.css";
 
-const EditNoteForm = ({ oneNoteId, setIsUpdated }) => {
+const EditNoteForm = ({ oneNoteId, setIsUpdated, toggleModalEdit }) => {
   const [notesDate, setNotesDate] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [notesContent, setNotesContent] = useState("");
@@ -39,6 +39,7 @@ const EditNoteForm = ({ oneNoteId, setIsUpdated }) => {
       );
       console.log("Done", response.data);
       setIsUpdated(true);
+      toggleModalEdit();
     } catch (err) {
       console.log(err);
     }
