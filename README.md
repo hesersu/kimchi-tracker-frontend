@@ -1,4 +1,4 @@
-![Header Image](path/to/header-image.png)
+![Header Image](https://github.com/hesersu/kimchi-tracker-frontend/blob/main/src/assets/README%20assets/Title.png)
 
 # Kimchi Tracker
 
@@ -16,5 +16,6 @@ Kimchi Tracker allows users to log their kimchi batches, monitor fermentation pr
 # Screenshots
 
 _Add screenshots of the application here._  
-![Screenshot 1](path/to/screenshot1.png)  
-![Screenshot 2](path/to/screenshot2.png)
+![Screenshot 1](https://github.com/hesersu/kimchi-tracker-frontend/blob/main/src/assets/README%20assets/Screenshots3.png)  
+![Screenshot 2](https://github.com/hesersu/kimchi-tracker-frontend/blob/main/src/assets/README%20assets/Screenshots2.png)
+![Screenshot 2](https://github.com/hesersu/kimchi-tracker-frontend/blob/main/src/assets/README%20assets/Screenshots%204.png)
