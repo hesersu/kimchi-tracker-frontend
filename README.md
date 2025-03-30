@@ -14,8 +14,9 @@ Kimchi Tracker allows users to log their kimchi batches, monitor fermentation pr
 - **Gemini API**: Integration of Google Gemini LLM into the project.
 
 # Screenshots
-
-_Add screenshots of the application here._  
-![Screenshot 1](https://github.com/hesersu/kimchi-tracker-frontend/blob/main/src/assets/README%20assets/Screenshots3.png)  
+## Kimchi Batch Overview
+![Screenshot 1](https://github.com/hesersu/kimchi-tracker-frontend/blob/main/src/assets/README%20assets/Screenshots3.png)
+## AI Kimchi assistant using Google Gemini API
 ![Screenshot 2](https://github.com/hesersu/kimchi-tracker-frontend/blob/main/src/assets/README%20assets/Screenshots2.png)
+## Recipe templates based on Maagnchi's and Paik Jong-Won's recipes
 ![Screenshot 2](https://github.com/hesersu/kimchi-tracker-frontend/blob/main/src/assets/README%20assets/Screenshots%204.png)
