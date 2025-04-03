@@ -12,6 +12,7 @@ Kimchi Tracker allows users to log their kimchi batches, monitor fermentation pr
 
 - **React**: Frontend framework for building the user interface.
 - **Gemini API**: Integration of Google Gemini LLM into the project.
+- **Hosting**: Deployed on Netlify and Vercel
 
 # Screenshots
 ## Kimchi Batch Overview
